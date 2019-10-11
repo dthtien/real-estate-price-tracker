@@ -38,15 +38,15 @@ export default function Sidebar(props) {
           });
         } else {
           listItemClasses = classNames({
-            [" " + classes[color]]: activeRoute(prop.layout + prop.path)
+            [" " + classes[color]]: activeRoute(prop.path)
           });
         }
         const whiteFontClasses = classNames({
-          [" " + classes.whiteFont]: activeRoute(prop.layout + prop.path)
+          [" " + classes.whiteFont]: activeRoute(prop.path)
         });
         return (
           <NavLink
-            to={prop.layout + prop.path}
+            to={prop.path}
             className={activePro + classes.item}
             activeClassName="active"
             key={key}

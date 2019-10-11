@@ -2,6 +2,8 @@ import React from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
+import { connect } from "react-redux";
+import { compose } from "redux";
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
@@ -12,6 +14,8 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
+import reducer, { reducerName as key, load, saga } from "./reducer";
+import reducerInjector from "utils/reducerInjector";
 
 import avatar from "assets/img/faces/marc.jpg";
 
@@ -36,7 +40,7 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-export default function UserProfile() {
+function UserProfile() {
   const classes = useStyles();
   return (
     <div>
@@ -176,3 +180,19 @@ export default function UserProfile() {
     </div>
   );
 }
+
+const mapDispatchToProp = {
+  load
+};
+
+const withConnect = connect(
+  null,
+  mapDispatchToProp
+);
+
+const withReducer = reducerInjector({ key, reducer, saga });
+
+export default compose(
+  withConnect,
+  withReducer
+)(UserProfile);
