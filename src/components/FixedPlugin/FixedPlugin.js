@@ -1,9 +1,10 @@
 /*eslint-disable*/
-import React, { Component } from "react";
+import React from "react";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // nodejs library that concatenates classes
 import classnames from "classnames";
+import Settings from "@material-ui/icons/Settings";
 
 import imagine1 from "assets/img/sidebar-1.jpg";
 import imagine2 from "assets/img/sidebar-2.jpg";
@@ -23,9 +24,11 @@ export default function FixedPlugin(props) {
         "rtl-fixed-plugin": props.rtlActive
       })}
     >
-      <div id="fixedPluginClasses" className={props.fixedClasses}>
+      <div
+        id="fixedPluginClasses"
+        className={`${props.fixedClasses} mt-5 text-white`}>
         <div onClick={handleClick}>
-          <i className="fa fa-cog fa-2x" />
+          <Settings />
         </div>
         <ul className="dropdown-menu">
           <li className="header-title">SIDEBAR FILTERS</li>

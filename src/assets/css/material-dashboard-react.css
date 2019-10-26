@@ -509,3 +509,10 @@ footer ul li a:hover {
 * {
   letter-spacing: normal !important;
 }
+
+.text-white {
+  color: white;
+}
+.mt-5 {
+  margin-top: 5px;
+}
