@@ -7,20 +7,24 @@
   "dependencies": {
     "@material-ui/core": "4.3.2",
     "@material-ui/icons": "4.2.1",
-    "chartist": "0.10.1",
+    "axios": "^0.19.0",
     "classnames": "2.2.6",
     "history": "4.9.0",
+    "numeral": "^2.0.6",
     "perfect-scrollbar": "1.4.0",
     "prop-types": "15.7.2",
     "react": "16.9.0",
-    "react-chartist": "0.13.3",
     "react-dom": "16.9.0",
     "react-redux": "^7.1.1",
     "react-router-dom": "5.0.1",
     "react-scripts": "3.1.0",
+    "react-select": "^3.0.8",
     "react-swipeable-views": "0.13.3",
+    "recharts": "^1.7.1",
     "redux": "^4.0.4",
     "redux-saga": "^1.1.1",
+    "request": "^2.88.0",
+    "reselect": "^4.0.0",
     "webfontloader": "^1.6.28"
   },
   "scripts": {
@@ -56,6 +60,7 @@
     "eslint-plugin-prettier": "3.1.0",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8",
+    "immer": "^4.0.1",
     "prettier": "1.18.2"
   },
   "browserslist": {

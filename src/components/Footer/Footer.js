@@ -28,8 +28,12 @@ export default function Footer(props) {
               </a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <a href="#portfolio" className={classes.block}>
-                Portfolio
+              <a
+                href="https://www.visualcv.com/dthtien1"
+                className={classes.block}
+                target="_blank"
+              >
+                CV
               </a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
