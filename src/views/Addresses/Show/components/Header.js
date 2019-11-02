@@ -36,7 +36,7 @@ const Header = ({
           </CardHeader>
           <CardBody>
             <GridContainer>
-              <GridItem xs={6}>
+              <GridItem xs={12} md={6}>
                 <p className={classes.detailText}>
                   Price/m²: {numeral(price).format("0,0")} VND/m²{" "}
                   <i>
@@ -44,7 +44,7 @@ const Header = ({
                   </i>
                 </p>
               </GridItem>
-              <GridItem xs={6}>
+              <GridItem xs={12} md={6}>
                 <p className={classes.detailText}>
                   Lands count: {numeral(landsCount).format("0,0")}{" "}
                   <i>

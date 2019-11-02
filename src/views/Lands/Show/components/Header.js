@@ -36,38 +36,38 @@ const Header = ({
           </CardHeader>
           <CardBody>
             <GridContainer>
-              <GridItem xs={2}>
+              <GridItem xs={12} sm={6} md={2}>
                 <p className={classes.detailText}>
                   Price/m²: {numeral(feetSquarePrice).format("0,0")} VND/m²
                 </p>
               </GridItem>
-              <GridItem xs={2}>
+              <GridItem xs={12} sm={6} md={2}>
                 {" "}
                 <p className={classes.detailText}>
                   Feet square: {feetSquare} m²
                 </p>
               </GridItem>
-              <GridItem xs={2}>
+              <GridItem xs={12} sm={6} md={2}>
                 <p className={classes.detailText}>
                   Price: {numeral(totalPrice).format("0,0")} VND
                 </p>
               </GridItem>
               {historyPricesData && (
                 <>
-                  <GridItem xs={2}>
+                  <GridItem xs={12} sm={6} md={2}>
                     <p className={classes.detailText}>
                       Change times:{" "}
                       {numeral(historyPricesData.total_count).format("0,0")}
                     </p>
                   </GridItem>
-                  <GridItem xs={2}>
+                  <GridItem xs={12} sm={6} md={2}>
                     <p className={classes.detailText}>
                       Highest price:{" "}
                       {numeral(historyPricesData.max_total_price).format("0,0")}{" "}
                       VND
                     </p>
                   </GridItem>
-                  <GridItem xs={2}>
+                  <GridItem xs={12} sm={6} md={2}>
                     <p className={classes.detailText}>
                       Lowest price:{" "}
                       {numeral(historyPricesData.min_total_price).format("0,0")}{" "}

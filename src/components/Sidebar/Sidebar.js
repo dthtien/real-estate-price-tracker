@@ -2,7 +2,7 @@
 import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -82,18 +82,17 @@ export default function Sidebar(props) {
   );
   var brand = (
     <div className={classes.logo}>
-      <a
-        href="https://www.creative-tim.com?ref=mdr-sidebar"
+      <Link
+        to="/"
         className={classNames(classes.logoLink, {
           [classes.logoLinkRTL]: props.rtlActive
         })}
-        target="_blank"
       >
         <div className={classes.logoImage}>
           <img src={logo} alt="logo" className={classes.img} />
         </div>
         {logoText}
-      </a>
+      </Link>
     </div>
   );
   return (
