@@ -30,7 +30,12 @@ const HistoryPrices = ({
   const [priceOrdering, setPriceOrdering] = useState("desc");
   const [postedDateOrdering, setPostedDateOrdering] = useState("desc");
   useEffect(() => {
-    handleLoadingHistoryPrices();
+    loadHistoryPrices({
+      ...params,
+      page: currentPage,
+      posted_date: postedDateOrdering,
+      total_price: priceOrdering
+    });
   }, [currentPage, priceOrdering, postedDateOrdering]);
 
   const handlePageChange = (_, page) => {
@@ -48,15 +53,6 @@ const HistoryPrices = ({
     }
 
     setStateFunc(ordering);
-  };
-
-  const handleLoadingHistoryPrices = () => {
-    loadHistoryPrices({
-      ...params,
-      page: currentPage,
-      posted_date: postedDateOrdering,
-      total_price: priceOrdering
-    });
   };
 
   const renderData = () => {

@@ -1,10 +1,10 @@
 {
-  "name": "material-dashboard-react",
-  "homepage": "https://github.com/creativetimofficial/material-dashboard-react",
+  "name": "top-lands",
+  "homepage": "https://github.com/dthtien/real_estate_researcher_tracker",
   "authors": [
     "creative-tim"
   ],
-  "description": "A Badass Material-UI Kit based on Material Design",
+  "description": "The Ho Chi Minh city real estate tracker",
   "main": "public/index.html",
   "keywords": [
     "material",

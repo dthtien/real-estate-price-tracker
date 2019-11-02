@@ -65,21 +65,21 @@ const dashboardRoutes = [
     name: "Table List",
     icon: "content_paste",
     component: TableList,
-    hide: process.env.NODE_ENV != "development"
+    hide: process.env.NODE_ENV !== "development"
   },
   {
     path: "/typography",
     name: "Typography",
     icon: LibraryBooks,
     component: Typography,
-    hide: process.env.NODE_ENV != "development"
+    hide: process.env.NODE_ENV !== "development"
   },
   {
     path: "/icons",
     name: "Icons",
     icon: BubbleChart,
     component: Icons,
-    hide: process.env.NODE_ENV != "development"
+    hide: process.env.NODE_ENV !== "development"
   },
   {
     path: "/notifications",
@@ -87,7 +87,7 @@ const dashboardRoutes = [
     icon: Notifications,
     component: NotificationsPage,
     layout: "/admin",
-    hide: process.env.NODE_ENV != "development"
+    hide: process.env.NODE_ENV !== "development"
   }
 ];
 
