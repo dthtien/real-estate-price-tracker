@@ -9,7 +9,7 @@ import {
 } from "./types";
 
 export const initialState = {
-  landsDetails: {
+  address: {
     loading: false,
     error: false,
     data: null
@@ -21,27 +21,27 @@ export const initialState = {
   }
 };
 
-export const reducerName = "dashBoard";
+export const reducerName = "addressesShow";
 
 const reducer = (state = initialState, action = {}) =>
   produce(state, draft => {
     switch (action.type) {
       case LOAD:
-        draft.landsDetails.loading = true;
-        draft.landsDetails.error = false;
-        draft.landsDetails.data = null;
+        draft.address.loading = true;
+        draft.address.error = false;
+        draft.address.data = null;
         break;
 
       case LOAD_SUCCESS:
-        draft.landsDetails.loading = false;
-        draft.landsDetails.error = false;
-        draft.landsDetails.data = action.payload;
+        draft.address.loading = false;
+        draft.address.error = false;
+        draft.address.data = action.payload;
         break;
 
       case LOAD_ERROR:
-        draft.landsDetails.loading = false;
-        draft.landsDetails.error = true;
-        draft.landsDetails.data = null;
+        draft.address.loading = false;
+        draft.address.error = true;
+        draft.address.data = null;
         break;
 
       case LOAD_LANDS:

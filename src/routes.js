@@ -39,35 +39,55 @@ const dashboardRoutes = [
     })
   },
   {
+    path: "/lands/:id",
+    name: "LandDetails",
+    component: loadable(() => import("views/Lands/Show"), {
+      fallback: "Loading..."
+    }),
+    hide: true
+  },
+  {
+    path: "/addresses/:id",
+    name: "AddressDetails",
+    component: loadable(() => import("views/Addresses/Show"), {
+      fallback: "Loading..."
+    }),
+    hide: true
+  },
+  {
     path: "/user",
     name: "User Profile",
     icon: Person,
-    component: UserProfile
+    component: UserProfile,
   },
   {
     path: "/table",
     name: "Table List",
     icon: "content_paste",
-    component: TableList
+    component: TableList,
+    hide: process.env.NODE_ENV != "development"
   },
   {
     path: "/typography",
     name: "Typography",
     icon: LibraryBooks,
-    component: Typography
+    component: Typography,
+    hide: process.env.NODE_ENV != "development"
   },
   {
     path: "/icons",
     name: "Icons",
     icon: BubbleChart,
-    component: Icons
+    component: Icons,
+    hide: process.env.NODE_ENV != "development"
   },
   {
     path: "/notifications",
     name: "Notifications",
     icon: Notifications,
     component: NotificationsPage,
-    layout: "/admin"
+    layout: "/admin",
+    hide: process.env.NODE_ENV != "development"
   }
 ];
 

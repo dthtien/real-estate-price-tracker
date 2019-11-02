@@ -15,10 +15,10 @@ const XAxisTick = ({ x, y, payload }) => (
       dy={5}
       textAnchor="end"
       fill="#666"
-      style={{ textTransform: "capitalize", fontSize: 13 }}
-      transform="rotate(-25)"
+      style={{ textTransform: "capitalize", fontSize: 10 }}
+      transform="rotate(-10)"
     >
-      {payload.value.length > 10 ? "" : payload.value}
+      {payload.value.length > 20 ? "" : payload.value}
     </text>
   </g>
 );

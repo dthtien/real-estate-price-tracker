@@ -2,14 +2,14 @@ import React, { memo } from "react";
 import PropTypes from "prop-types";
 import numeral from "numeral";
 
-const CustomizedLabel = ({ x, y, stroke, value }) => (
+const CustomizedLabel = ({ x, y, value }) => (
   <text
     x={x}
     y={y}
     dy={-4}
-    fill={stroke}
+    fill="#6b6b6b"
     fontSize={11}
-    textAnchor="middle"
+    textAnchor="right"
     fontWeight="bold"
   >
     {numeral(value).format("0a")}
@@ -19,8 +19,7 @@ const CustomizedLabel = ({ x, y, stroke, value }) => (
 CustomizedLabel.propTypes = {
   x: PropTypes.number.isRequired,
   y: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-  stroke: PropTypes.string
+  value: PropTypes.number.isRequired
 };
 
 export default memo(CustomizedLabel);

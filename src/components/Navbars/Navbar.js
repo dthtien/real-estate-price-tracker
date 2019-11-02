@@ -21,7 +21,7 @@ const useStyles = makeStyles(styles);
 export default function Header(props) {
   const classes = useStyles();
   function makeBrand() {
-    var name;
+    var name = "land";
     props.routes.map(prop => {
       if (window.location.href.indexOf(prop.path) !== -1) {
         name = prop.name;

@@ -50,7 +50,6 @@
   },
   "homepage": "https://creativetimofficial.github.io/material-dashboard-react/#/dashboard",
   "optionalDependencies": {
-    "@types/googlemaps": "3.37.3",
     "@types/markerclustererplus": "2.1.33",
     "ajv": "6.10.2",
     "typescript": "3.5.3"

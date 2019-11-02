@@ -19,8 +19,10 @@ import CardFooter from "components/Card/CardFooter.js";
 import reducer, {
   reducerName as key,
   load,
+  loadLands,
   saga,
-  makeSelectLandDetails
+  makeSelectLandDetails,
+  makeSelectLands
 } from "./duck";
 import reducerInjector from "utils/reducerInjector";
 
@@ -31,7 +33,12 @@ import { LineChart } from "components/Charts";
 
 const useStyles = makeStyles(styles);
 
-function Dashboard({ load, landsDetails: { data, loading } }) {
+function Dashboard({
+  load,
+  landsDetails: { data, loading },
+  loadLands,
+  lands
+}) {
   const classes = useStyles();
   useEffect(() => {
     if (!data) {
@@ -55,14 +62,13 @@ function Dashboard({ load, landsDetails: { data, loading } }) {
       }));
 
       gotTime = attrs.latest_updated_price;
-
       return (
         <>
           <GridContainer>
             <GridItem xs={12} sm={12} md={12}>
               <Card chart>
-                <CardHeader>
-                  <LineChart data={landsChart} chartKey="average_price" />
+                <CardHeader className={classes.chartContent}>
+                  <LineChart data={landsChart} chartKey="price" />
                 </CardHeader>
                 <CardBody>
                   <h4 className={classes.cardTitle}>
@@ -71,7 +77,7 @@ function Dashboard({ load, landsDetails: { data, loading } }) {
                   <p className={classes.cardCategory}>
                     <span className={classes.successText}>
                       <ArrowUpward className={classes.upArrowCardCategory} />
-                      {attrs.lands_count_ratio}%
+                      {attrs.price_ratio}%
                     </span>{" "}
                     increase in yesterday.
                   </p>
@@ -91,7 +97,13 @@ function Dashboard({ load, landsDetails: { data, loading } }) {
             newLandsCount={attrs.new_lands_count}
             updatedAt={gotTime}
           />
-          <Lands classes={classes} lands={attrs.lands} updatedAt={gotTime} />
+          <Lands
+            classes={classes}
+            lands={lands}
+            updatedAt={gotTime}
+            loadLands={loadLands}
+            addresses={addressParsed()}
+          />
         </>
       );
     }
@@ -103,14 +115,15 @@ function Dashboard({ load, landsDetails: { data, loading } }) {
   };
 
   const handleAddressNamesSelectorChange = adds => {
-    console.log(adds);
-    setAddresses(adds);
+    setAddresses(adds || []);
     return adds;
   };
 
+  const addressParsed = () => addresses.map(address => address.value);
+
   const handleSearch = e => {
     e.preventDefault();
-    const params = addresses.map(address => address.value);
+    const params = addressParsed();
 
     load({ address_names: params });
   };
@@ -126,18 +139,23 @@ function Dashboard({ load, landsDetails: { data, loading } }) {
     </>
   );
 }
-const mapDispatchToProps = {
-  load
-};
 
 Dashboard.propTypes = {
   load: PropTypes.func.isRequired,
-  landsDetails: PropTypes.object.isRequired
+  loadLands: PropTypes.func.isRequired,
+  landsDetails: PropTypes.object.isRequired,
+  lands: PropTypes.object.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
-  landsDetails: makeSelectLandDetails()
+  landsDetails: makeSelectLandDetails(),
+  lands: makeSelectLands()
 });
+
+const mapDispatchToProps = {
+  load,
+  loadLands
+};
 
 const withConnect = connect(
   mapStateToProps,

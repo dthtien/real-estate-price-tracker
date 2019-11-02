@@ -1,6 +1,6 @@
 import { takeLatest, call, put, all } from "redux-saga/effects";
 import { LOAD, LOAD_LANDS } from "./types";
-import { getAddresses, getLand } from "./api";
+import { getAddresses, getLands } from "./api";
 import {
   loadSuccess,
   loadError,
@@ -19,7 +19,7 @@ function* loadSaga(action) {
 
 function* loadLandsSaga(action) {
   try {
-    const response = yield call(getLand, action.payload);
+    const response = yield call(getLands, action.payload);
     yield put(loadLandsSuccess(response));
   } catch (e) {
     put(loadLandsError(e));

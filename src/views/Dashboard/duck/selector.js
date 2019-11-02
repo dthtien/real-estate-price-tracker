@@ -8,4 +8,11 @@ const makeSelectLandDetails = () =>
     selectDashBoard,
     selectDashBoardState => selectDashBoardState.landsDetails
   );
-export { makeSelectLandDetails };
+
+const makeSelectLands = () =>
+  createSelector(
+    selectDashBoard,
+    selectDashBoardState => selectDashBoardState.lands
+  );
+
+export { makeSelectLandDetails, makeSelectLands };

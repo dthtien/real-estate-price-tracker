@@ -5,7 +5,6 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  CartesianAxis,
   Tooltip,
   ResponsiveContainer,
   ComposedChart
@@ -28,25 +27,21 @@ function ChartWrapper(props) {
   return (
     <div className={classes.chartFluid}>
       <ResponsiveContainer>
-        <ComposedChart width={800} height={300} data={data}>
+        <ComposedChart data={data}>
           <XAxis
             dataKey="name"
-            padding={{ right: 5 }}
-            interval={0}
             tick={<CustomizedXAxisTick />}
             hide={data.length > 11}
-            orientation="bottom"
+            interval={0}
             axisLine
           />
           <YAxis
             axisLine
-            tickSize={4}
             tickLine
-            padding={{ top: 100 }}
+            tickSize={4}
             tick={<CustomizedYAxisTick />}
           />
-          <CartesianGrid vertical={false} strokeDasharray="3 3" />
-          <CartesianAxis vertical={false} />
+          <CartesianGrid stroke="#eee" strokeDasharray="3 3" />
           <Tooltip content={<CustomTooltip />} />
           {children}
         </ComposedChart>

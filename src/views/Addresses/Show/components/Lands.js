@@ -13,7 +13,7 @@ import GridItem from "components/Grid/GridItem.js";
 import CardBody from "components/Card/CardBody.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
-import { landStyles as styles } from "../styles";
+import { landsStyle as styles } from "../styles";
 import Land from "./Land";
 
 const useStyles = makeStyles(styles);

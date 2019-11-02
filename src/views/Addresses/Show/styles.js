@@ -12,29 +12,48 @@ const styles = {
   searchButton: {
     marginLeft: 5
   },
-  priceNumber: {
-    fontSize: 14,
-    fontWeight: "bold"
+  titleText: {
+    fontWeight: "bold",
+    textTransform: "capitalize",
+    float: "left"
+  },
+  detailText: {
+    fontWeight: "bold",
+    textAlign: "center",
+    fontSize: "1.3em",
+    marginBlockStart: 0,
+    marginBlockEnd: 0,
+    "& i": {
+      fontSize: "0.7em",
+      fontWeight: 300,
+      "& span": {
+        color: "#0ee80e"
+      }
+    }
   },
   chartContent: {
     overflowX: "auto"
+  },
+  priceRange: {
+    marginTop: "1em"
   }
 };
 
-export const landStyles = {
+export const landsStyle = {
   ...tableCommonStyle,
   tableContent: {
     overflow: "auto",
-    height: 300
+    height: 500
+  },
+  tableHeadCell: {
+    ...tableCommonStyle.tableHeadCell,
+    cursor: "pointer"
   },
   cardTitle: {
     "& div": {
       float: "right",
       color: "white"
     }
-  },
-  landDetail: {
-    cursor: "pointer"
   }
 };
 

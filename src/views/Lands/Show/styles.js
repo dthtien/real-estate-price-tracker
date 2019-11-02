@@ -12,29 +12,40 @@ const styles = {
   searchButton: {
     marginLeft: 5
   },
-  priceNumber: {
-    fontSize: 14,
-    fontWeight: "bold"
+  titleText: {
+    fontWeight: "bold",
+    textTransform: "capitalize"
+  },
+  detailText: {
+    fontWeight: "bold",
+    textAlign: "center",
+    fontSize: "1em",
+    marginBlockStart: 0,
+    marginBlockEnd: 0
   },
   chartContent: {
     overflowX: "auto"
+  },
+  priceRange: {
+    marginTop: "1em"
   }
 };
 
-export const landStyles = {
+export const historyPriceStyles = {
   ...tableCommonStyle,
   tableContent: {
     overflow: "auto",
-    height: 300
+    height: 500
+  },
+  tableHeadCell: {
+    ...tableCommonStyle.tableHeadCell,
+    cursor: "pointer"
   },
   cardTitle: {
     "& div": {
       float: "right",
       color: "white"
     }
-  },
-  landDetail: {
-    cursor: "pointer"
   }
 };
 

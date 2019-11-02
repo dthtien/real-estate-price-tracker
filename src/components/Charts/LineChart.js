@@ -4,7 +4,7 @@ import { Line } from "recharts";
 import { createMuiTheme } from "@material-ui/core/styles";
 import CharWrapper from "./ChartWrapper";
 import { yellowCyanTheme } from "utils/themePalette";
-import CustomizeLabel from "./Lable";
+import CustomizeLabel from "./Label";
 const theme = createMuiTheme(yellowCyanTheme);
 const color = {
   main: theme.palette.primary.main,
@@ -17,10 +17,8 @@ const LineChart = props => {
   return (
     <CharWrapper {...props}>
       <Line
-        type="monotone"
         dataKey={chartKey}
-        strokeWidth={6}
-        fill={color.secondary}
+        strokeWidth={5}
         stroke={color.main}
         label={<CustomizeLabel />}
       />

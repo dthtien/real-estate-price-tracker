@@ -13,27 +13,50 @@ import GridItem from "components/Grid/GridItem.js";
 import CardBody from "components/Card/CardBody.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
-import { landStyles as styles } from "../styles";
-import Land from "./Land";
+import { historyPriceStyles as styles } from "../styles";
+import HistoryPrice from "./HistoryPrice";
 
 const useStyles = makeStyles(styles);
 
-const TopLands = ({
-  lands: { data, loading },
-  updatedAt,
-  loadLands,
-  addresses
+const HistoryPrices = ({
+  loadHistoryPrices,
+  params,
+  historyPrices: { loading, data },
+  updatedAt
 }) => {
   const classes = useStyles();
-  useEffect(() => {
-    loadLands({ address_names: addresses });
-  }, []);
-
+  console.log(classes);
   const [currentPage, setCurrentPage] = useState(0);
+  const [priceOrdering, setPriceOrdering] = useState("desc");
+  const [postedDateOrdering, setPostedDateOrdering] = useState("desc");
+  useEffect(() => {
+    handleLoadingHistoryPrices();
+  }, [currentPage, priceOrdering, postedDateOrdering]);
 
   const handlePageChange = (_, page) => {
     setCurrentPage(page);
-    loadLands({ address_names: addresses, page });
+  };
+
+  const handleOrdering = name => {
+    let setStateFunc, ordering;
+    if ("priceOrdering" === name) {
+      setStateFunc = setPriceOrdering;
+      ordering = priceOrdering === "desc" ? "asc" : "desc";
+    } else {
+      setStateFunc = setPostedDateOrdering;
+      ordering = postedDateOrdering === "desc" ? "asc" : "desc";
+    }
+
+    setStateFunc(ordering);
+  };
+
+  const handleLoadingHistoryPrices = () => {
+    loadHistoryPrices({
+      ...params,
+      page: currentPage,
+      posted_date: postedDateOrdering,
+      total_price: priceOrdering
+    });
   };
 
   const renderData = () => {
@@ -48,8 +71,12 @@ const TopLands = ({
     if (data) {
       return (
         <>
-          {data.lands.map(({ id, attributes }) => (
-            <Land land={attributes} key={id} classes={classes} />
+          {data.history_prices.map(history_price => (
+            <HistoryPrice
+              historyPrice={history_price}
+              key={history_price.id}
+              classes={classes}
+            />
           ))}
         </>
       );
@@ -66,7 +93,7 @@ const TopLands = ({
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
         <Card>
-          <CardHeader color="warning" className={classes.cardTitle}>
+          <CardHeader color="info" className={classes.cardTitle}>
             {data && (
               <TablePagination
                 count={data.total_count}
@@ -77,37 +104,30 @@ const TopLands = ({
                 component="div"
               />
             )}
-            <h4 className={classes.cardTitleWhite}>Latest selling lands</h4>
+            <h4 className={classes.cardTitleWhite}>Price logs</h4>
             <p className={classes.cardCategoryWhite}>Updated at {updatedAt}</p>
           </CardHeader>
           <CardBody className={classes.tableContent}>
             <Table className={classes.tableResponsive}>
               <TableHead className={classes.blueTableHeader}>
-                <TableRow>
+                <TableRow hover>
                   <TableCell
                     className={`${classes.tableCell} ${classes.tableHeadCell}`}
+                    onClick={() => handleOrdering("priceOrdering")}
                   >
                     Price
                   </TableCell>
                   <TableCell
                     className={`${classes.tableCell} ${classes.tableHeadCell}`}
-                  >
-                    Address
-                  </TableCell>
-                  <TableCell
-                    className={`${classes.tableCell} ${classes.tableHeadCell}`}
-                  >
-                    m²
-                  </TableCell>
-                  <TableCell
-                    className={`${classes.tableCell} ${classes.tableHeadCell}`}
+                    onClick={() => handleOrdering("priceOrdering")}
                   >
                     Price/m²
                   </TableCell>
                   <TableCell
                     className={`${classes.tableCell} ${classes.tableHeadCell}`}
+                    onClick={() => handleOrdering("postedDateOrdering")}
                   >
-                    Updated times
+                    Posted date
                   </TableCell>
                 </TableRow>
               </TableHead>
@@ -120,11 +140,11 @@ const TopLands = ({
   );
 };
 
-TopLands.propTypes = {
-  lands: PropTypes.object.isRequired,
+HistoryPrices.propTypes = {
+  historyPrices: PropTypes.object.isRequired,
   updatedAt: PropTypes.string.isRequired,
-  loadLands: PropTypes.func.isRequired,
-  addresses: PropTypes.array.isRequired
+  loadHistoryPrices: PropTypes.func.isRequired,
+  params: PropTypes.object.isRequired
 };
 
-export default memo(TopLands);
+export default memo(HistoryPrices);
