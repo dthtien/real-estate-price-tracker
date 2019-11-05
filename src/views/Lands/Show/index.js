@@ -28,7 +28,7 @@ const Show = ({
 }) => {
   useEffect(() => {
     load(params);
-  }, []);
+  }, [params]);
 
   const classes = useStyles();
 

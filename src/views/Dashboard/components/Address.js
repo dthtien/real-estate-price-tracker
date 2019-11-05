@@ -4,36 +4,32 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import numeral from "numeral";
 import { withRouter } from "react-router-dom";
+import { capitalize } from "utils";
 
-const Land = ({ land, classes, history }) => {
+const Address = ({ address, classes, history }) => {
   return (
     <TableRow
-      onClick={() => history.push(`lands/${land.slug}`)}
-      className={classes.landDetail}
+      onClick={() => history.push(`/addresses/${address.slug}`)}
+      className={classes.addressDetail}
+      hover
     >
       <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
-        {numeral(land.total_price).format("0a")} VND
+        {capitalize(address.name)}
       </TableCell>
       <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
-        {land.title}
+        {numeral(address.price).format("0a")} VND/m²
       </TableCell>
       <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
-        {land.acreage} m²
-      </TableCell>
-      <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
-        {numeral(land.square_meter_price).format("0a")} VND/m²
-      </TableCell>
-      <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
-        {land.change_times}
+        {numeral(address.lands_count).format("0a")}
       </TableCell>
     </TableRow>
   );
 };
 
-Land.propTypes = {
-  land: PropTypes.object.isRequired,
+Address.propTypes = {
+  address: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired
 };
 
-export default memo(withRouter(Land));
+export default memo(withRouter(Address));

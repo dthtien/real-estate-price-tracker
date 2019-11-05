@@ -4,18 +4,19 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import numeral from "numeral";
 import { withRouter } from "react-router-dom";
+import { capitalize } from "utils";
 
 const Land = ({ land, classes, history }) => {
   return (
     <TableRow
-      onClick={() => history.push(`lands/${land.slug}`)}
+      onClick={() => history.push(`/lands/${land.slug}`)}
       className={classes.landDetail}
     >
       <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
         {numeral(land.total_price).format("0a")} VND
       </TableCell>
       <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
-        {land.title}
+        {capitalize(land.title)}
       </TableCell>
       <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
         {land.acreage} m²

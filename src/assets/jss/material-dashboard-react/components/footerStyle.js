@@ -15,8 +15,8 @@ const footerStyle = {
     position: "relative",
     display: "block",
     ...defaultFont,
-    fontWeight: "500",
-    fontSize: "12px"
+    fontWeight: "700 !important",
+    fontSize: "16px"
   },
   left: {
     float: "left!important",
@@ -32,6 +32,7 @@ const footerStyle = {
     bottom: "0",
     borderTop: "1px solid " + grayColor[11],
     padding: "15px 0",
+    fontWeight: "bold",
     ...defaultFont
   },
   container,

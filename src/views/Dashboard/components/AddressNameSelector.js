@@ -19,12 +19,7 @@ const loadOptions = inputValue => {
   });
 };
 
-const AddressNamesSelector = ({
-  defaultValue,
-  options,
-  handleSelectChange,
-  className
-}) => (
+const AddressNamesSelector = ({ options, handleSelectChange, className }) => (
   <AsyncSelect
     components={animatedComponents}
     cacheOptions
@@ -32,7 +27,7 @@ const AddressNamesSelector = ({
     defaultOptions={options}
     isMulti
     onChange={handleSelectChange}
-    defaultValue={defaultValue}
+    defaultValue={options}
     className={className}
   />
 );

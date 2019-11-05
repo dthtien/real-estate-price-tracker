@@ -9,7 +9,7 @@ import reducer, {
   makeSelectAddressDetail,
   makeSelectLands
 } from "./duck";
-import { Header, Lands } from "./components";
+import { Header, Lands, Addresses } from "./components";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
@@ -34,14 +34,15 @@ const Show = ({
 
   useEffect(() => {
     load(params);
-  }, []);
+  }, [params]);
 
   if (loading) {
     return <h1>Loading</h1>;
   }
   if (data) {
     const { attributes } = data;
-    const chartData = attributes.sub_addresses.map(
+    const { sub_addresses } = attributes;
+    const chartData = sub_addresses.map(
       ({ id, attributes: { name, price } }) => ({
         name,
         id,
@@ -60,15 +61,22 @@ const Show = ({
           landsCountRatio={attributes.lands_count_ratio}
           priceRatio={attributes.price_ratio}
         />
-        <Card chart>
-          <CardHeader className={classes.chartContent}>
-            <LineChart data={chartData} chartKey="price" />
-          </CardHeader>
-          <CardBody>
-            <h4 className={classes.cardTitle}>Average prices report</h4>
-          </CardBody>
-        </Card>
-
+        {sub_addresses.length > 0 && (
+          <>
+            <Card chart>
+              <CardHeader className={classes.chartContent}>
+                <LineChart data={chartData} chartKey="price" />
+              </CardHeader>
+              <CardBody>
+                <h4 className={classes.cardTitle}>Average prices report</h4>
+              </CardBody>
+            </Card>
+            <Addresses
+              addresses={attributes.sub_addresses}
+              updatedAt={attributes.logged_date}
+            />
+          </>
+        )}
         <Lands
           updatedAt={attributes.logged_date}
           loadLands={loadLands}
