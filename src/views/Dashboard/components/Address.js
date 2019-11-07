@@ -4,7 +4,7 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import numeral from "numeral";
 import { withRouter } from "react-router-dom";
-import { capitalize } from "utils";
+import { titleize } from "utils";
 
 const Address = ({ address, classes, history }) => {
   return (
@@ -14,13 +14,13 @@ const Address = ({ address, classes, history }) => {
       hover
     >
       <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
-        {capitalize(address.name)}
+        {titleize(address.name)}
       </TableCell>
       <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
         {numeral(address.price).format("0a")} VND/m²
       </TableCell>
       <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
-        {numeral(address.lands_count).format("0a")}
+        {numeral(address.lands_count).format("0,0")}
       </TableCell>
     </TableRow>
   );

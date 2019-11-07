@@ -11,3 +11,11 @@ export const getUnique = (arr, comp) => {
 };
 
 export const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
+
+export const titleize = str => {
+  str = str.toLowerCase().split(" ");
+  for (var i = 0; i < str.length; i++) {
+    str[i] = capitalize(str[i])
+  }
+  return str.join(" ");
+};

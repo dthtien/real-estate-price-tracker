@@ -83,12 +83,16 @@ function Dashboard({
       id
     }));
 
-    const defaultAddresses = subAddresses.map(
-      ({ attributes: { alias_name, name } }) => ({
-        value: alias_name,
-        label: capitalize(name)
-      })
-    );
+    let defaultAddresses = [];
+
+    if (search) {
+      defaultAddresses = subAddresses.map(
+        ({ attributes: { alias_name, name } }) => ({
+          value: alias_name,
+          label: capitalize(name)
+        })
+      );
+    }
 
     gotTime = attrs.latest_updated_price;
     return (

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import numeral from "numeral";
 
 const Tooltip = ({ active, payload, label }) => {
-  if (active && payload) {
+  if (active && payload && payload[0]) {
     const { value, dataKey } = payload[0];
     return (
       <div
