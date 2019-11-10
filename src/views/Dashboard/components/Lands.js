@@ -14,6 +14,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import { landStyles as styles } from "../styles";
 import Land from "./Land";
 import { useOrdering } from "../../hooks";
+import Loading from "components/Loading";
 
 const useStyles = makeStyles(styles);
 
@@ -38,7 +39,21 @@ const TopLands = ({
     if (loading) {
       return (
         <tr>
-          <td>Loading</td>
+          <td>
+            <Loading type="textRow" />
+          </td>
+          <td>
+            <Loading type="textRow" />
+          </td>
+          <td>
+            <Loading type="textRow" />
+          </td>
+          <td>
+            <Loading type="textRow" />
+          </td>
+          <td>
+            <Loading type="textRow" />
+          </td>
         </tr>
       );
     }

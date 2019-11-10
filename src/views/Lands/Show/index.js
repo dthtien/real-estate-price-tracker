@@ -17,6 +17,7 @@ import { Header, HistoryPrices } from "./components";
 
 import styles from "./styles";
 import { makeSelectHistoryPrices } from "./duck/selector";
+import Loading from "components/Loading";
 const useStyles = makeStyles(styles);
 
 const Show = ({
@@ -34,7 +35,7 @@ const Show = ({
 
   const renderData = () => {
     if (loading) {
-      return <h1>Loading</h1>;
+      return <Loading ready={!loading} />;
     }
     if (data) {
       const { attributes } = data;

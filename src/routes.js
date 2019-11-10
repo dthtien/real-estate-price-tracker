@@ -16,6 +16,7 @@
 
 */
 // @material-ui/icons
+import React from "react";
 import Dashboard from "@material-ui/icons/Dashboard";
 import Person from "@material-ui/icons/Person";
 import LibraryBooks from "@material-ui/icons/LibraryBooks";
@@ -28,6 +29,7 @@ import Typography from "views/Typography/Typography.js";
 import Icons from "views/Icons/Icons.js";
 import NotificationsPage from "views/Notifications/Notifications.js";
 import loadable from "./utils/loadable";
+import Loading from "components/Loading";
 
 const dashboardRoutes = [
   {
@@ -35,14 +37,14 @@ const dashboardRoutes = [
     name: "Dashboard",
     icon: Dashboard,
     component: loadable(() => import("views/Dashboard"), {
-      fallback: "Loading..."
+      fallback: <Loading />
     })
   },
   {
     path: "/lands/:id",
     name: "LandDetails",
     component: loadable(() => import("views/Lands/Show"), {
-      fallback: "Loading..."
+      fallback: <Loading />
     }),
     hide: true
   },
@@ -50,7 +52,7 @@ const dashboardRoutes = [
     path: "/addresses/:id",
     name: "AddressDetails",
     component: loadable(() => import("views/Addresses/Show"), {
-      fallback: "Loading..."
+      fallback: <Loading />
     }),
     hide: true
   },
@@ -58,7 +60,7 @@ const dashboardRoutes = [
     path: "/user",
     name: "User Profile",
     icon: Person,
-    component: UserProfile,
+    component: UserProfile
   },
   {
     path: "/table",

@@ -34,6 +34,7 @@ import styles from "./styles";
 import { createStructuredSelector } from "reselect";
 import { Header, Lands, SearchForm, Addresses } from "./components";
 import { LineChart } from "components/Charts";
+import Loading from "components/Loading";
 
 const useStyles = makeStyles(styles);
 
@@ -47,7 +48,6 @@ function Dashboard({
 }) {
   const classes = useStyles();
   const params = qs.parse(search);
-  console.log(params);
   const [order, setOrder] = useOrdering();
 
   useEffect(() => {
@@ -161,7 +161,7 @@ function Dashboard({
   }
 
   if (loading) {
-    return <h1>Loading</h1>;
+    return <Loading ready={!loading} />;
   }
 
   return <h1>Data not found</h1>;

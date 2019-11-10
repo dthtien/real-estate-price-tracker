@@ -21,6 +21,7 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import styles from "./styles";
 import { useOrdering } from "../../hooks";
+import Loading from "components/Loading";
 
 const useStyles = makeStyles(styles);
 
@@ -39,7 +40,7 @@ const Show = ({
   }, [params, order]);
 
   if (loading) {
-    return <h1>Loading</h1>;
+    return <Loading ready={!loading} />;
   }
   if (data) {
     const { attributes } = data;
