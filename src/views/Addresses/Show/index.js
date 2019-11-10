@@ -20,6 +20,7 @@ import { createStructuredSelector } from "reselect";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import styles from "./styles";
+import { useOrdering } from "../../hooks";
 
 const useStyles = makeStyles(styles);
 
@@ -31,10 +32,11 @@ const Show = ({
   lands
 }) => {
   const classes = useStyles();
+  const [order, setOrder] = useOrdering();
 
   useEffect(() => {
-    load(params);
-  }, [params]);
+    load({ ...params, order });
+  }, [params, order]);
 
   if (loading) {
     return <h1>Loading</h1>;
@@ -74,6 +76,7 @@ const Show = ({
             <Addresses
               addresses={attributes.sub_addresses}
               updatedAt={attributes.logged_date}
+              ordering={setOrder}
             />
           </>
         )}

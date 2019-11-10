@@ -15,7 +15,7 @@ import Address from "./Address";
 
 const useStyles = makeStyles(styles);
 
-const TopLands = ({ updatedAt, addresses }) => {
+const Addresses = ({ updatedAt, addresses, ordering }) => {
   const classes = useStyles();
 
   return (
@@ -30,16 +30,25 @@ const TopLands = ({ updatedAt, addresses }) => {
             <TableRow>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
+                onClick={() => {
+                  ordering("name");
+                }}
               >
                 Name
               </TableCell>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
+                onClick={() => {
+                  ordering("avg_square_meter_price");
+                }}
               >
                 Price
               </TableCell>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
+                onClick={() => {
+                  ordering("lands_count");
+                }}
               >
                 Selling lands
               </TableCell>
@@ -56,9 +65,14 @@ const TopLands = ({ updatedAt, addresses }) => {
   );
 };
 
-TopLands.propTypes = {
-  updatedAt: PropTypes.string.isRequired,
-  addresses: PropTypes.array.isRequired
+Addresses.defaultPropTypes = {
+  ordering: () => {}
 };
 
-export default memo(TopLands);
+Addresses.propTypes = {
+  updatedAt: PropTypes.string.isRequired,
+  addresses: PropTypes.array.isRequired,
+  ordering: PropTypes.func
+};
+
+export default memo(Addresses);

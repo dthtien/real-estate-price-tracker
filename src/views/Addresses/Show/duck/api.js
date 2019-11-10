@@ -2,7 +2,7 @@ import httpClient from "utils/httpClient";
 
 export const getAddresses = (params = {}) =>
   httpClient()
-    .get(`addresses/${params.id}`)
+    .get(`addresses/${params.id}`, { params })
     .then(response => response.data)
     .catch(err => {
       throw err.response;

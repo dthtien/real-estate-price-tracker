@@ -13,6 +13,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import { landStyles as styles } from "../styles";
 import Land from "./Land";
+import { useOrdering } from "../../hooks";
 
 const useStyles = makeStyles(styles);
 
@@ -23,15 +24,14 @@ const TopLands = ({
   addresses
 }) => {
   const classes = useStyles();
-  useEffect(() => {
-    loadLands({ address_names: addresses });
-  }, []);
-
+  const [order, setOrder] = useOrdering();
   const [currentPage, setCurrentPage] = useState(0);
+  useEffect(() => {
+    loadLands({ address_names: addresses, page: currentPage, order });
+  }, [currentPage, order]);
 
   const handlePageChange = (_, page) => {
     setCurrentPage(page);
-    loadLands({ address_names: addresses, page });
   };
 
   const renderData = () => {
@@ -82,6 +82,7 @@ const TopLands = ({
             <TableRow>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
+                onClick={() => setOrder("total_price")}
               >
                 Price
               </TableCell>
@@ -92,16 +93,19 @@ const TopLands = ({
               </TableCell>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
+                onClick={() => setOrder("acreage")}
               >
                 m²
               </TableCell>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
+                onClick={() => setOrder("square_meter_price")}
               >
                 Price/m²
               </TableCell>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
+                onClick={() => setOrder("history_price")}
               >
                 Updated times
               </TableCell>

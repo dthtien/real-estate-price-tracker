@@ -26,6 +26,7 @@ import reducer, {
   makeSelectLandDetails,
   makeSelectLands
 } from "./duck";
+import { useOrdering } from "../hooks";
 
 import reducerInjector from "utils/reducerInjector";
 
@@ -45,12 +46,13 @@ function Dashboard({
   location: { search }
 }) {
   const classes = useStyles();
+  const params = qs.parse(search);
+  console.log(params);
+  const [order, setOrder] = useOrdering();
 
   useEffect(() => {
-    const addressNames = qs.parse(search);
-
-    load(addressNames);
-  }, [search]);
+    load({ ...params, order });
+  }, [search, order]);
 
   const [addresses, setAddresses] = useState([]);
 
@@ -85,7 +87,7 @@ function Dashboard({
 
     let defaultAddresses = [];
 
-    if (search) {
+    if (search && search !== "?") {
       defaultAddresses = subAddresses.map(
         ({ attributes: { alias_name, name } }) => ({
           value: alias_name,
@@ -138,7 +140,11 @@ function Dashboard({
         />
         <GridContainer>
           <GridItem xs={12} sm={12} md={5}>
-            <Addresses addresses={subAddresses} updatedAt={gotTime} />
+            <Addresses
+              addresses={subAddresses}
+              updatedAt={gotTime}
+              ordering={setOrder}
+            />
           </GridItem>
           <GridItem xs={12} sm={12} md={7}>
             <Lands

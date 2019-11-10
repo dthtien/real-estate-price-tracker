@@ -38,6 +38,7 @@ const Show = ({
     }
     if (data) {
       const { attributes } = data;
+      const { data: historyPricesData } = historyPrices;
       return (
         <div>
           <h3 className={classes.titleText}>{attributes.address}</h3>
@@ -48,7 +49,8 @@ const Show = ({
             feetSquare={attributes.acreage}
             feetSquarePrice={attributes.square_meter_price}
             updatedAt={attributes.updated_at}
-            historyPricesData={historyPrices.data}
+            historyPricesData={historyPricesData}
+            description={attributes.description}
           />
           <HistoryPrices
             loadHistoryPrices={loadHistoryPrices}

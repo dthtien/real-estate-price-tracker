@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 // @material-ui/icons
 import Store from "@material-ui/icons/Store";
-import DateRange from "@material-ui/icons/DateRange";
 import numeral from "numeral";
 // core components
 import GridItem from "components/Grid/GridItem.js";
@@ -12,15 +11,15 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardIcon from "components/Card/CardIcon.js";
 import CardFooter from "components/Card/CardFooter.js";
 import CardBody from "components/Card/CardBody";
-
+import Typography from "@material-ui/core/Typography";
 const Header = ({
   classes,
   title,
   totalPrice,
   feetSquare,
   feetSquarePrice,
-  updatedAt,
-  historyPricesData
+  historyPricesData,
+  description
 }) => {
   return (
     <GridContainer>
@@ -80,10 +79,7 @@ const Header = ({
           </CardBody>
           <CardFooter stats>
             <div className={classes.stats}>
-              <div className={classes.stats}>
-                <DateRange />
-                Updated at {updatedAt}
-              </div>
+              <Typography variant="body1">{description}</Typography>
             </div>
           </CardFooter>
         </Card>
@@ -99,6 +95,7 @@ Header.propTypes = {
   feetSquarePrice: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   updatedAt: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
   historyPricesData: PropTypes.object
 };
 
