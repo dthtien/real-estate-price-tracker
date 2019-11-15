@@ -9,8 +9,9 @@ import { capitalize } from "utils";
 const Land = ({ land, classes, history }) => {
   return (
     <TableRow
-      onClick={() => history.push(`/lands/${land.slug}`)}
+      onClick={() => history.push(`/app/lands/${land.slug}`)}
       className={classes.landDetail}
+      hover
     >
       <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
         {numeral(land.total_price).format("0a")} VND

@@ -9,7 +9,7 @@ import { titleize } from "utils";
 const Address = ({ address, classes, history }) => {
   return (
     <TableRow
-      onClick={() => history.push(`/addresses/${address.slug}`)}
+      onClick={() => history.push(`/app/addresses/${address.slug}`)}
       className={classes.addressDetail}
       hover
     >

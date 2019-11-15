@@ -42,9 +42,6 @@ export default function Header(props) {
             {makeBrand()}
           </Button>
         </div>
-        {/* <Hidden smDown implementation="css">
-          <AdminNavbarLinks />}
-        </Hidden> */}
         <Hidden mdUp implementation="css">
           <IconButton
             color="inherit"

@@ -22,6 +22,7 @@ import { compose } from "redux";
 import styles from "./styles";
 import { useOrdering } from "../../hooks";
 import Loading from "components/Loading";
+import CustomHeader from "components/Header";
 
 const useStyles = makeStyles(styles);
 
@@ -55,6 +56,7 @@ const Show = ({
 
     return (
       <div>
+        <CustomHeader title={attributes.name} />
         <Header
           classes={classes}
           title={attributes.name}

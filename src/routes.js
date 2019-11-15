@@ -33,7 +33,7 @@ import Loading from "components/Loading";
 
 const dashboardRoutes = [
   {
-    path: "/dashboard",
+    path: "/app/dashboard",
     name: "Dashboard",
     icon: Dashboard,
     component: loadable(() => import("views/Dashboard"), {
@@ -41,7 +41,7 @@ const dashboardRoutes = [
     })
   },
   {
-    path: "/lands/:id",
+    path: "/app/lands/:id",
     name: "LandDetails",
     component: loadable(() => import("views/Lands/Show"), {
       fallback: <Loading />
@@ -49,7 +49,7 @@ const dashboardRoutes = [
     hide: true
   },
   {
-    path: "/addresses/:id",
+    path: "/app/addresses/:id",
     name: "AddressDetails",
     component: loadable(() => import("views/Addresses/Show"), {
       fallback: <Loading />

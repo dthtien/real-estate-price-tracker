@@ -35,6 +35,13 @@ export const landStyles = {
   },
   landDetail: {
     cursor: "pointer"
+  },
+  addressDetail: {
+    cursor: "pointer"
+  },
+  clickable: {
+    cursor: "pointer",
+    textDecoration: "underline"
   }
 };
 

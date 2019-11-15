@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { makeStyles } from "@material-ui/core/styles";
 import { createStructuredSelector } from "reselect";
+import CustomHeader from "components/Header";
 
 import reducer, {
   load,
@@ -42,6 +43,7 @@ const Show = ({
       const { data: historyPricesData } = historyPrices;
       return (
         <div>
+          <CustomHeader title={attributes.address} />
           <h3 className={classes.titleText}>{attributes.address}</h3>
           <Header
             classes={classes}

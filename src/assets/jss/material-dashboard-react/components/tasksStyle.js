@@ -29,7 +29,8 @@ const tasksStyle = {
     verticalAlign: "middle",
     border: "none",
     lineHeight: "1.42857143",
-    fontSize: "14px"
+    fontSize: "14px",
+    cursor: "pointer"
   },
   tableCellRTL: {
     textAlign: "right"

@@ -2,7 +2,7 @@
 
 ![](demo.png?raw=true)
 ## Structure
-## Status: _developing_
+## Status: Finish phase 1
 ## contact:
 - tiendt2311@gmail.com
 - [CV](https://www.visualcv.com/dthtien1/)

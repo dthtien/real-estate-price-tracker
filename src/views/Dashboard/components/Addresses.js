@@ -27,7 +27,7 @@ const Addresses = ({ updatedAt, addresses, ordering }) => {
       <CardBody className={classes.tableContent}>
         <Table className={classes.tableResponsive}>
           <TableHead className={classes.blueTableHeader}>
-            <TableRow>
+            <TableRow hover className={classes.clickable}>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
                 onClick={() => {
