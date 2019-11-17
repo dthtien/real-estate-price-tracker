@@ -22,7 +22,8 @@ const TopLands = ({
   lands: { data, loading },
   updatedAt,
   loadLands,
-  addresses
+  addresses,
+  landsCount
 }) => {
   const classes = useStyles();
   const [order, setOrder] = useOrdering();
@@ -80,7 +81,7 @@ const TopLands = ({
       <CardHeader color="warning" className={classes.cardTitle}>
         {data && (
           <TablePagination
-            count={data.total_count}
+            count={landsCount}
             rowsPerPage={25}
             page={currentPage}
             onChangePage={handlePageChange}
@@ -137,7 +138,8 @@ TopLands.propTypes = {
   lands: PropTypes.object.isRequired,
   updatedAt: PropTypes.string.isRequired,
   loadLands: PropTypes.func.isRequired,
-  addresses: PropTypes.array.isRequired
+  addresses: PropTypes.array,
+  landsCount: PropTypes.number.isRequired
 };
 
 export default memo(TopLands);

@@ -88,6 +88,7 @@ const Show = ({
           loadLands={loadLands}
           addresses={[params.id]}
           lands={lands}
+          landsCount={attributes.lands_count}
         />
       </div>
     );

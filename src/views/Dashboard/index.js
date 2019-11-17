@@ -49,7 +49,6 @@ function Dashboard({
   const classes = useStyles();
   const params = qs.parse(search);
   const [order, setOrder] = useOrdering();
-
   useEffect(() => {
     load({ ...params, order });
   }, [search, order]);
@@ -152,7 +151,8 @@ function Dashboard({
               lands={lands}
               updatedAt={gotTime}
               loadLands={loadLands}
-              addresses={addressParsed()}
+              addresses={params.address_names}
+              landsCount={attrs.lands_count}
             />
           </GridItem>
         </GridContainer>

@@ -7,7 +7,7 @@ import HeroSection from "./components/HerroSection";
 import ClientsSection from "./components/ClientsSection";
 import FeaturesSection from "./components/FeaturesSection";
 import logo from "assets/img/favicon.ico";
-import dashboard from "assets/img/dashboard.png";
+import dashboard from "assets/img/dashboard.jpg";
 
 function IndexPage({ history }) {
   return (
