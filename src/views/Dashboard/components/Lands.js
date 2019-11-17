@@ -105,7 +105,7 @@ const TopLands = ({
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
               >
-                Address
+                Title
               </TableCell>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
