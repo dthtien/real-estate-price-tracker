@@ -13,7 +13,6 @@ import AccessTime from "@material-ui/icons/AccessTime";
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 import { capitalize } from "utils";
@@ -107,10 +106,8 @@ function Dashboard({
         <GridContainer>
           <GridItem xs={12} sm={12} md={12}>
             <Card chart>
-              <CardHeader className={classes.chartContent}>
-                <LineChart data={landsChart} chartKey="price" />
-              </CardHeader>
               <CardBody>
+                <LineChart data={landsChart} chartKey="price" />
                 <h4 className={classes.cardTitle}>
                   Districts average price report
                 </h4>

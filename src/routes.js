@@ -57,7 +57,7 @@ const dashboardRoutes = [
     hide: true
   },
   {
-    path: "/user",
+    path: "/app/user",
     name: "User Profile",
     icon: Person,
     component: UserProfile
