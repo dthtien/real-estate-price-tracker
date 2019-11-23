@@ -4,8 +4,14 @@ import Section from "../Section";
 import { Link } from "react-router-dom";
 import "./Footer.scss";
 import SocialLinks from "../SocialLinks";
+import { useTranslation } from "react-i18next";
 
 function Footer(props) {
+  const { i18n } = useTranslation();
+  const changeLanguage = lng => {
+    i18n.changeLanguage(lng);
+  };
+
   return (
     <Section
       color={props.color}
@@ -35,7 +41,11 @@ function Footer(props) {
         <div className="social-links right">
           <SocialLinks />
         </div>
-        <div className="copyright left">{props.copyright}</div>
+        <div className="copyright left">
+          <a onClick={() => changeLanguage("vn")}>Tiếng Việt</a>
+          <a onClick={() => changeLanguage("en")}>English</a>
+          {props.copyright}
+        </div>
       </div>
     </Section>
   );

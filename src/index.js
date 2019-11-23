@@ -5,6 +5,7 @@ import { Router, Route, Switch } from "react-router-dom";
 import WebFont from "webfontloader";
 import { Provider } from "react-redux";
 import store from "./utils/createStore";
+import "utils/i18n";
 
 // core components
 import General from "layouts/General.js";

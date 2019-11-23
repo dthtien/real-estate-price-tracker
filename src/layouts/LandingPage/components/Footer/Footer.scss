@@ -35,6 +35,12 @@
       }
     }
 
+    .copyright {
+      a {
+        margin: 0 5px;
+      }
+    }
+
     // Tablet and up
     @media screen and (min-width: 769px) {
       > div {

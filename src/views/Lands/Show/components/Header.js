@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 // @material-ui/icons
 import Store from "@material-ui/icons/Store";
 import numeral from "numeral";
+import { useTranslation } from "react-i18next";
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
@@ -21,6 +22,7 @@ const Header = ({
   historyPricesData,
   description
 }) => {
+  const { t } = useTranslation();
   return (
     <GridContainer>
       <GridItem xs={12}>
@@ -37,38 +39,39 @@ const Header = ({
             <GridContainer>
               <GridItem xs={12} sm={6} md={2}>
                 <p className={classes.detailText}>
-                  Price/m²: {numeral(feetSquarePrice).format("0,0")} VND/m²
+                  {t("Price")}/m²: {numeral(feetSquarePrice).format("0,0")}{" "}
+                  VND/m²
                 </p>
               </GridItem>
               <GridItem xs={12} sm={6} md={2}>
                 {" "}
                 <p className={classes.detailText}>
-                  Feet square: {feetSquare} m²
+                  {t("Feet square")}: {feetSquare} m²
                 </p>
               </GridItem>
               <GridItem xs={12} sm={6} md={2}>
                 <p className={classes.detailText}>
-                  Price: {numeral(totalPrice).format("0,0")} VND
+                  {t("Price")}: {numeral(totalPrice).format("0,0")} VND
                 </p>
               </GridItem>
               {historyPricesData && (
                 <>
                   <GridItem xs={12} sm={6} md={2}>
                     <p className={classes.detailText}>
-                      Change times:{" "}
+                      {t("Change times")}:{" "}
                       {numeral(historyPricesData.total_count).format("0,0")}
                     </p>
                   </GridItem>
                   <GridItem xs={12} sm={6} md={2}>
                     <p className={classes.detailText}>
-                      Highest price:{" "}
+                      {t("Highest price")}:{" "}
                       {numeral(historyPricesData.max_total_price).format("0,0")}{" "}
                       VND
                     </p>
                   </GridItem>
                   <GridItem xs={12} sm={6} md={2}>
                     <p className={classes.detailText}>
-                      Lowest price:{" "}
+                      {t("Lowest price")}:{" "}
                       {numeral(historyPricesData.min_total_price).format("0,0")}{" "}
                       VND
                     </p>

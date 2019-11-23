@@ -26,6 +26,7 @@ import reducer, {
   makeSelectLands
 } from "./duck";
 import { useOrdering } from "../hooks";
+import { useTranslation } from "react-i18next";
 
 import reducerInjector from "utils/reducerInjector";
 
@@ -36,7 +37,6 @@ import { LineChart } from "components/Charts";
 import Loading from "components/Loading";
 
 const useStyles = makeStyles(styles);
-
 function Dashboard({
   load,
   landsDetails: { data, loading },
@@ -51,7 +51,7 @@ function Dashboard({
   useEffect(() => {
     load({ ...params, order });
   }, [search, order]);
-
+  const { t } = useTranslation();
   const [addresses, setAddresses] = useState([]);
 
   const handleAddressNamesSelectorChange = adds => {
@@ -107,21 +107,22 @@ function Dashboard({
           <GridItem xs={12} sm={12} md={12}>
             <Card chart>
               <CardBody>
-                <LineChart data={landsChart} chartKey="price" />
-                <h4 className={classes.cardTitle}>
-                  Districts average price report
-                </h4>
+                <div className={classes.chartContent}>
+                  <LineChart data={landsChart} chartKey="price" />
+                </div>
+                <h4 className={classes.cardTitle}>{t("chartTitle")}</h4>
                 <p className={classes.cardCategory}>
                   <span className={classes.successText}>
                     <ArrowUpward className={classes.upArrowCardCategory} />
                     {attrs.price_ratio}%
                   </span>{" "}
-                  increase in yesterday.
+                  {t("increase in yesterday")}.
                 </p>
               </CardBody>
               <CardFooter chart>
                 <div className={classes.stats}>
-                  <AccessTime /> updated at {gotTime}
+                  <AccessTime />
+                  {t("Updated at")} {gotTime}
                 </div>
               </CardFooter>
             </Card>
@@ -161,7 +162,7 @@ function Dashboard({
     return <Loading ready={!loading} />;
   }
 
-  return <h1>Data not found</h1>;
+  return <h1>{t("Data not found")}</h1>;
 }
 
 Dashboard.propTypes = {

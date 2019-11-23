@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Store from "@material-ui/icons/Store";
 import DateRange from "@material-ui/icons/DateRange";
 import numeral from "numeral";
+import { useTranslation } from "react-i18next";
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
@@ -22,6 +23,7 @@ const Header = ({
   priceRatio,
   updatedAt
 }) => {
+  const { t } = useTranslation();
   return (
     <GridContainer>
       <GridItem xs={12}>
@@ -38,17 +40,17 @@ const Header = ({
             <GridContainer>
               <GridItem xs={12} md={6}>
                 <p className={classes.detailText}>
-                  Price/m²: {numeral(price).format("0,0")} VND/m²{" "}
+                  {t("Price")}: {numeral(price).format("0,0")} VND/m²{" "}
                   <i>
-                    Increase ratio: <span>{priceRatio * 100}%</span>
+                    {t("Increase ratio")}: <span>{priceRatio * 100}%</span>
                   </i>
                 </p>
               </GridItem>
               <GridItem xs={12} md={6}>
                 <p className={classes.detailText}>
-                  Lands count: {numeral(landsCount).format("0,0")}{" "}
+                  {t("Lands")}: {numeral(landsCount).format("0,0")}{" "}
                   <i>
-                    Increase ratio: <span>{landsCountRatio * 100}%</span>
+                    {t("Increase ratio")}: <span>{landsCountRatio * 100}%</span>
                   </i>
                 </p>
               </GridItem>
@@ -58,7 +60,7 @@ const Header = ({
             <div className={classes.stats}>
               <div className={classes.stats}>
                 <DateRange />
-                Updated at {updatedAt}
+                {t("Updated at")} {updatedAt}
               </div>
             </div>
           </CardFooter>

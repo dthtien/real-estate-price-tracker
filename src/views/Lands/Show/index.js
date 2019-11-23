@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { compose } from "redux";
 import { makeStyles } from "@material-ui/core/styles";
 import { createStructuredSelector } from "reselect";
@@ -31,6 +32,7 @@ const Show = ({
   useEffect(() => {
     load(params);
   }, [params]);
+  const { t } = useTranslation();
 
   const classes = useStyles();
 
@@ -65,7 +67,7 @@ const Show = ({
       );
     }
 
-    return <h1>Data not found</h1>;
+    return <h1>{t("Data not found")}</h1>;
   };
   return renderData();
 };

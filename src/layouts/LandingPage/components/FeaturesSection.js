@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
+import { useTranslation } from "react-i18next";
 import Section from "./Section";
 import SectionHeader from "./SectionHeader";
 import Features from "./Features";
@@ -9,6 +10,7 @@ import alwaysUpdateImg from "assets/img/always_update.svg";
 import havingFun from "assets/img/having_fun.svg";
 
 function FeaturesSection(props) {
+  const { t } = useTranslation();
   return (
     <Section
       color={props.color}
@@ -26,27 +28,23 @@ function FeaturesSection(props) {
         <Features
           items={[
             {
-              title: "Data update every day",
-              description:
-                "Data is crawled everyday from a lot of sites. The price will be close to the market price",
+              title: t("firstFeature"),
+              description: t("firstFeatureContent"),
               image: uptodateImg
             },
             {
-              title: "Convenient",
-              description:
-                "You can get data from chat bot, web application, and the social network applications",
+              title: t("secondFeature"),
+              description: t("secondFeatureContent"),
               image: convenientImg
             },
             {
-              title: "Always update",
-              description:
-                "You can register to receive the notification via facebook messager about the good deal or custom condition",
+              title: t("thirdFeature"),
+              description: t("thirdFeatureContent"),
               image: alwaysUpdateImg
             },
             {
-              title: "Support 24/7",
-              description:
-                "Give me more requirement if you want. I need requirement <3",
+              title: t("fourthFeature"),
+              description: t("fourthFeatureContent"),
               image: havingFun
             }
           ]}

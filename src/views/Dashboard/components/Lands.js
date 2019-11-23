@@ -9,6 +9,7 @@ import TableRow from "@material-ui/core/TableRow";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import CardBody from "components/Card/CardBody.js";
+import { useTranslation } from "react-i18next";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import { landStyles as styles } from "../styles";
@@ -26,6 +27,7 @@ const TopLands = ({
   landsCount
 }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
   const [order, setOrder] = useOrdering();
   const [currentPage, setCurrentPage] = useState(0);
   useEffect(() => {
@@ -71,7 +73,9 @@ const TopLands = ({
 
     return (
       <tr>
-        <td>Loading</td>
+        <td>
+          <Loading />
+        </td>
       </tr>
     );
   };
@@ -89,8 +93,10 @@ const TopLands = ({
             component="div"
           />
         )}
-        <h4 className={classes.cardTitleWhite}>Latest selling lands</h4>
-        <p className={classes.cardCategoryWhite}>Updated at {updatedAt}</p>
+        <h4 className={classes.cardTitleWhite}>{t("Lands")}</h4>
+        <p className={classes.cardCategoryWhite}>
+          {t("Updated at")} {updatedAt}
+        </p>
       </CardHeader>
       <CardBody className={classes.tableContent}>
         <Table className={classes.tableResponsive}>
@@ -100,30 +106,30 @@ const TopLands = ({
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
                 onClick={() => setOrder("total_price")}
               >
-                Price
+                {t("Description")}
               </TableCell>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
               >
-                Title
+                {t("Description")}
               </TableCell>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
                 onClick={() => setOrder("acreage")}
               >
-                m²
+                {t("m²")}
               </TableCell>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
                 onClick={() => setOrder("square_meter_price")}
               >
-                Price/m²
+                {t("Price")}
               </TableCell>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
                 onClick={() => setOrder("history_price")}
               >
-                Updated times
+                {t("Updated at")}
               </TableCell>
             </TableRow>
           </TableHead>

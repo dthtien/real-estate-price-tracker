@@ -15,6 +15,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardIcon from "components/Card/CardIcon.js";
 import CardFooter from "components/Card/CardFooter.js";
+import { useTranslation } from "react-i18next";
 
 const Header = ({
   classes,
@@ -23,6 +24,7 @@ const Header = ({
   newLandsCount,
   updatedAt
 }) => {
+  const { t } = useTranslation();
   return (
     <GridContainer>
       <GridItem xs={12} sm={6} md={3}>
@@ -31,7 +33,7 @@ const Header = ({
             <CardIcon color="warning">
               <FileCopy />
             </CardIcon>
-            <p className={classes.cardCategory}>Average Price</p>
+            <p className={classes.cardCategory}>{t("Average Price")} (m²)</p>
             <h3 className={`${classes.cardTitle} ${classes.priceNumber}`}>
               {numeral(averagePrice).format("0,0")} VND
             </h3>
@@ -40,7 +42,7 @@ const Header = ({
             <div className={classes.stats}>
               <div className={classes.stats}>
                 <DateRange />
-                Updated at {updatedAt}
+                {t("Updated at")} {updatedAt}
               </div>
             </div>
           </CardFooter>
@@ -52,7 +54,7 @@ const Header = ({
             <CardIcon color="info">
               <Store />
             </CardIcon>
-            <p className={classes.cardCategory}>Total selling lands</p>
+            <p className={classes.cardCategory}>{t("Total selling lands")}</p>
             <h3 className={`${classes.cardTitle} ${classes.priceNumber}`}>
               {numeral(landsCount).format("0,0")}
             </h3>
@@ -60,7 +62,7 @@ const Header = ({
           <CardFooter stats>
             <div className={classes.stats}>
               <DateRange />
-              Updated at {updatedAt}
+              {t("Updated at")} {updatedAt}
             </div>
           </CardFooter>
         </Card>
@@ -71,7 +73,7 @@ const Header = ({
             <CardIcon color="warning">
               <InfoOutlined />
             </CardIcon>
-            <p className={classes.cardCategory}>New lands</p>
+            <p className={classes.cardCategory}>{t("New lands")}</p>
             <h3 className={`${classes.cardTitle} ${classes.priceNumber}`}>
               {newLandsCount}
             </h3>
@@ -79,7 +81,7 @@ const Header = ({
           <CardFooter stats>
             <div className={classes.stats}>
               <DateRange />
-              Updated at {updatedAt}
+              {t("Updated at")} {updatedAt}
             </div>
           </CardFooter>
         </Card>
@@ -90,7 +92,7 @@ const Header = ({
             <CardIcon color="info">
               <Accessibility />
             </CardIcon>
-            <p className={classes.cardCategory}>Followers</p>
+            <p className={classes.cardCategory}>{t("Followers")}</p>
             <h3 className={`${classes.cardTitle} ${classes.priceNumber}`}>
               +245
             </h3>
@@ -98,7 +100,7 @@ const Header = ({
           <CardFooter stats>
             <div className={classes.stats}>
               <Update />
-              Updated at {updatedAt}
+              {t("Updated at")} {updatedAt}
             </div>
           </CardFooter>
         </Card>

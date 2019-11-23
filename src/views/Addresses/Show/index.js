@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
+import { useTranslation } from "react-i18next";
 import reducer, {
   reducerName as key,
   load,
@@ -34,6 +35,7 @@ const Show = ({
   lands
 }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
   const [order, setOrder] = useOrdering();
 
   useEffect(() => {
@@ -73,7 +75,7 @@ const Show = ({
                 <LineChart data={chartData} chartKey="price" />
               </CardHeader>
               <CardBody>
-                <h4 className={classes.cardTitle}>Average prices report</h4>
+                <h4 className={classes.cardTitle}>{t("chartTitle")}</h4>
               </CardBody>
             </Card>
             <Addresses
@@ -94,7 +96,7 @@ const Show = ({
     );
   }
 
-  return <h1>Data not found</h1>;
+  return <h1>{t("Data not found")}</h1>;
 };
 
 Show.propTypes = {

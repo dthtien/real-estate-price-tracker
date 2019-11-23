@@ -2,6 +2,7 @@
 import React from "react";
 import "./styles/global.scss";
 import { withRouter } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Footer from "./components/Footer";
 import HeroSection from "./components/HerroSection";
 import ClientsSection from "./components/ClientsSection";
@@ -10,6 +11,7 @@ import logo from "assets/img/favicon.ico";
 import dashboard from "assets/img/dashboard.jpg";
 
 function IndexPage({ history }) {
+  const { t } = useTranslation();
   return (
     <>
       <HeroSection
@@ -18,8 +20,8 @@ function IndexPage({ history }) {
         backgroundImage=""
         backgroundImageOpacity={1}
         title="TopLands.tech"
-        subtitle="A statistic application about Ho Chi Minh real estate prices. Get you good real estate deal."
-        buttonText="Get Started"
+        subtitle={t("introduction")}
+        buttonText={t("startButton")}
         image={dashboard}
         buttonOnClick={() => {
           history.push("/app/dashboard");
@@ -38,15 +40,15 @@ function IndexPage({ history }) {
         size="medium"
         backgroundImage=""
         backgroundImageOpacity={1}
-        title="Features"
-        subtitle="The application is getting data from several real estate sites. Users can get more details about selling lands or districts."
+        title={t("feature")}
+        subtitle={t("featureTitle")}
       />
       <Footer
         color="light"
         size="normal"
         backgroundImage=""
         backgroundImageOpacity={1}
-        copyright="© 2019 Company"
+        copyright="© 2019 TopLands"
         logo={logo}
       />
     </>

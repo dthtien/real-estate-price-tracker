@@ -1,5 +1,6 @@
 import React, { memo, useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 import GridContainer from "components/Grid/GridContainer.js";
 // import Table from "components/Table/Table.js";
 import { makeStyles } from "@material-ui/core/styles";
@@ -15,6 +16,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import { historyPriceStyles as styles } from "../styles";
 import HistoryPrice from "./HistoryPrice";
+import Loading from "components/Loading";
 
 const useStyles = makeStyles(styles);
 
@@ -25,6 +27,7 @@ const HistoryPrices = ({
   updatedAt
 }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
   console.log(classes);
   const [currentPage, setCurrentPage] = useState(0);
   const [priceOrdering, setPriceOrdering] = useState("desc");
@@ -59,7 +62,9 @@ const HistoryPrices = ({
     if (loading) {
       return (
         <tr>
-          <td>Loading</td>
+          <td>
+            <Loading />
+          </td>
         </tr>
       );
     }
@@ -80,7 +85,9 @@ const HistoryPrices = ({
 
     return (
       <tr>
-        <td>Loading</td>
+        <td>
+          <Loading />
+        </td>
       </tr>
     );
   };
@@ -100,8 +107,10 @@ const HistoryPrices = ({
                 component="div"
               />
             )}
-            <h4 className={classes.cardTitleWhite}>Price logs</h4>
-            <p className={classes.cardCategoryWhite}>Updated at {updatedAt}</p>
+            <h4 className={classes.cardTitleWhite}>{t("Price logs")}</h4>
+            <p className={classes.cardCategoryWhite}>
+              {t("Updated at")} {updatedAt}
+            </p>
           </CardHeader>
           <CardBody className={classes.tableContent}>
             <Table className={classes.tableResponsive}>
@@ -111,19 +120,19 @@ const HistoryPrices = ({
                     className={`${classes.tableCell} ${classes.tableHeadCell}`}
                     onClick={() => handleOrdering("priceOrdering")}
                   >
-                    Price
+                    {t("Price")}
                   </TableCell>
                   <TableCell
                     className={`${classes.tableCell} ${classes.tableHeadCell}`}
                     onClick={() => handleOrdering("priceOrdering")}
                   >
-                    Price/m²
+                    {t("Price")}/m²
                   </TableCell>
                   <TableCell
                     className={`${classes.tableCell} ${classes.tableHeadCell}`}
                     onClick={() => handleOrdering("postedDateOrdering")}
                   >
-                    Posted date
+                    {t("Updated at")}
                   </TableCell>
                 </TableRow>
               </TableHead>

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 // import Table from "components/Table/Table.js";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
+import { useTranslation } from "react-i18next";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableBody from "@material-ui/core/TableBody";
@@ -17,12 +18,15 @@ const useStyles = makeStyles(styles);
 
 const Addresses = ({ updatedAt, addresses, ordering }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
     <Card>
       <CardHeader color="info" className={classes.cardTitle}>
-        <h4 className={classes.cardTitleWhite}>Addresses</h4>
-        <p className={classes.cardCategoryWhite}>Updated at {updatedAt}</p>
+        <h4 className={classes.cardTitleWhite}>{t("Addresses")}</h4>
+        <p className={classes.cardCategoryWhite}>
+          {t("Updated at")} {updatedAt}
+        </p>
       </CardHeader>
       <CardBody className={classes.tableContent}>
         <Table className={classes.tableResponsive}>
@@ -34,7 +38,7 @@ const Addresses = ({ updatedAt, addresses, ordering }) => {
                   ordering("name");
                 }}
               >
-                Name
+                {t("Name")}
               </TableCell>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
@@ -42,7 +46,7 @@ const Addresses = ({ updatedAt, addresses, ordering }) => {
                   ordering("avg_square_meter_price");
                 }}
               >
-                Price
+                {t("Price")}
               </TableCell>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
@@ -50,7 +54,7 @@ const Addresses = ({ updatedAt, addresses, ordering }) => {
                   ordering("lands_count");
                 }}
               >
-                Selling lands
+                {t("Selling lands")}
               </TableCell>
             </TableRow>
           </TableHead>
