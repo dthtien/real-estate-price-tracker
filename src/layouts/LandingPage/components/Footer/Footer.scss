@@ -36,8 +36,11 @@
     }
 
     .copyright {
-      a {
+      button {
+        border: none;
         margin: 0 5px;
+        font-size: 13px;
+        background: none;
       }
     }
 

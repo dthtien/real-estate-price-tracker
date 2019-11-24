@@ -43,7 +43,7 @@ export const locales = {
       fourthFeature: "Hỗ trợ 24/7",
       fourthFeatureContent:
         "Bạn có thể yêu cầu thêm chức năng. Để ứng dụng thêm tiện lợi hơn.",
-      chartTitle: "Thống kê giá. Di chuột vào biểu đồ điểu xem chi tiết",
+      chartTitle: "Thống kê giá. Di chuột vào biểu đồ để xem chi tiết",
       "increase in yesterday": "tăng so với hôm qua",
       "Updated at": "Cập nhật vào",
       "Data not found": "Không tìm thấy dữ liệu",

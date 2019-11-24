@@ -13,7 +13,7 @@ const SocialLinks = () => (
     </a>
 
     <a
-      href="#"
+      href="https://twitter.com/dthtien"
       className="social-btn entypo-twitter"
       target="_blank"
       rel="noopener noreferrer"
@@ -31,7 +31,7 @@ const SocialLinks = () => (
     </a>
 
     <a
-      href="#"
+      href="https://www.instagram.com/dthtien/"
       className="social-btn entypo-instagrem"
       target="_blank"
       rel="noopener noreferrer"

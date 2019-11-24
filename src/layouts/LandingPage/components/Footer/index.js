@@ -42,8 +42,8 @@ function Footer(props) {
           <SocialLinks />
         </div>
         <div className="copyright left">
-          <a onClick={() => changeLanguage("vn")}>Tiếng Việt</a>
-          <a onClick={() => changeLanguage("en")}>English</a>
+          <button onClick={() => changeLanguage("vn")}>Tiếng Việt</button>
+          <button onClick={() => changeLanguage("en")}>English</button>
           {props.copyright}
         </div>
       </div>

@@ -9,7 +9,7 @@ i18n
   .init({
     // we init with resources
     resources: locales,
-    fallbackLng: "en",
+    fallbackLng: "vn",
     debug: true,
 
     // have a common namespace used around the full app
