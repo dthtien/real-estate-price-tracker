@@ -117,7 +117,7 @@ const TopLands = ({
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
                 onClick={() => setOrder("acreage")}
               >
-                {t("m²")}
+                m²
               </TableCell>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
