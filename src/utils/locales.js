@@ -20,7 +20,9 @@ export const locales = {
       fourthFeatureContent:
         "Give me more requirement if you want. I need requirement <3",
       chartTitle:
-        "Average prices statistic chart. Hover on chart to get details"
+        "Average prices statistic chart. Hover on chart to get details",
+      title:
+        "TopLands - A statistic application about Ho Chi Minh real estate prices"
     }
   },
   vn: {
@@ -62,7 +64,8 @@ export const locales = {
       "Lowest price": "Giá thấp nhất",
       "Change times": "Số lần thay đổi giá",
       "Feet square": "Diện tích",
-      "Price logs": "Lịch sự giá"
+      "Price logs": "Lịch sử giá",
+      title: "TopLands - Trang thống kê giá đất ở thành phố Hồ Chí Minh"
     }
   }
 };
