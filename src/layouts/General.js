@@ -13,7 +13,7 @@ import Sidebar from "components/Sidebar/Sidebar.js";
 import routes from "routes.js";
 
 import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
-import logo from "assets/img/favicon.ico";
+import logo from "assets/img/logo.png";
 import Header from "components/Header";
 
 let ps;
@@ -67,7 +67,6 @@ export default function General({ ...rest }) {
       <Header />
       <Sidebar
         routes={routes}
-        logoText={"toplands"}
         logo={logo}
         handleDrawerToggle={handleDrawerToggle}
         open={mobileOpen}
