@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 import HeroSection from "./components/HerroSection";
 import ClientsSection from "./components/ClientsSection";
 import FeaturesSection from "./components/FeaturesSection";
-import logo from "assets/img/favicon.ico";
+import logo from "assets/img/logo_landing.png";
 import dashboard from "assets/img/dashboard.jpg";
 
 function IndexPage({ history }) {

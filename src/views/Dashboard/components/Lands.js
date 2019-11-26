@@ -106,7 +106,7 @@ const TopLands = ({
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
                 onClick={() => setOrder("total_price")}
               >
-                {t("Description")}
+                {t("Price")}
               </TableCell>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
@@ -123,13 +123,13 @@ const TopLands = ({
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
                 onClick={() => setOrder("square_meter_price")}
               >
-                {t("Price")}
+                {t("Price")} (m²)
               </TableCell>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
                 onClick={() => setOrder("history_price")}
               >
-                {t("Updated at")}
+                {t("Change times")}
               </TableCell>
             </TableRow>
           </TableHead>

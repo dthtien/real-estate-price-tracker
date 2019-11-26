@@ -1,6 +1,6 @@
 import React from "react";
 import Footer from "./LandingPage/components/Footer";
-import logo from "assets/img/favicon.ico";
+import logo from "assets/img/logo.png";
 
 const Privacy = () => (
   <>

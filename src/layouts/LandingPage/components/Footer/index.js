@@ -23,7 +23,6 @@ function Footer(props) {
         <div className="brand left">
           <Link to="/">
             <img src={props.logo} alt="Logo" />
-            TopLands
           </Link>
         </div>
         <div className="links right">

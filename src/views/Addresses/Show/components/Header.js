@@ -42,7 +42,8 @@ const Header = ({
                 <p className={classes.detailText}>
                   {t("Price")}: {numeral(price).format("0,0")} VND/m²{" "}
                   <i>
-                    {t("Increase ratio")}: <span>{priceRatio * 100}%</span>
+                    {t("Increase ratio")}:{" "}
+                    <span>{numeral(priceRatio).format("0%")}</span>
                   </i>
                 </p>
               </GridItem>
@@ -50,7 +51,8 @@ const Header = ({
                 <p className={classes.detailText}>
                   {t("Lands")}: {numeral(landsCount).format("0,0")}{" "}
                   <i>
-                    {t("Increase ratio")}: <span>{landsCountRatio * 100}%</span>
+                    {t("Increase ratio")}:{" "}
+                    <span>{numeral(landsCountRatio).format("0%")}</span>
                   </i>
                 </p>
               </GridItem>
