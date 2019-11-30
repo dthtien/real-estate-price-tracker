@@ -67,6 +67,7 @@ const Show = ({
           landsCount={attributes.lands_count}
           landsCountRatio={attributes.lands_count_ratio}
           priceRatio={attributes.price_ratio}
+          newLandsCount={attributes.new_lands_count}
         />
         {sub_addresses.length > 0 && (
           <>

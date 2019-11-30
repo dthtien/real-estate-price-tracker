@@ -6,12 +6,14 @@ import { useTranslation } from "react-i18next";
 
 const Header = ({ title }) => {
   const { t } = useTranslation();
-
+  title = titleize(title || t("title"));
   return (
     <Helmet>
       <meta charSet="utf-8" />
-      <title>{titleize(title || t("title"))}</title>
+      <title>{title}</title>
       <link rel="toplands" href={window.location.href} />
+      <meta name="description" content={title} />
+      <meta name="keywords" content={title.split(" ")} />
     </Helmet>
   );
 };

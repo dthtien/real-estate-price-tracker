@@ -127,7 +127,7 @@ const TopLands = ({
               </TableCell>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
-                onClick={() => setOrder("history_price")}
+                onClick={() => setOrder("history_prices_count")}
               >
                 {t("Change times")}
               </TableCell>
