@@ -21,7 +21,8 @@ const Header = ({
   landsCount,
   landsCountRatio,
   priceRatio,
-  updatedAt
+  updatedAt,
+  newLandsCount
 }) => {
   const { t } = useTranslation();
   return (
@@ -38,6 +39,11 @@ const Header = ({
           </CardHeader>
           <CardBody>
             <GridContainer>
+              <GridItem xs={12} md={6}>
+                <p className={classes.detailText}>
+                  {t("New lands")}: {numeral(newLandsCount).format("0,0")}
+                </p>
+              </GridItem>
               <GridItem xs={12} md={6}>
                 <p className={classes.detailText}>
                   {t("Price")}: {numeral(price).format("0,0")} VND/m²{" "}
@@ -77,6 +83,7 @@ Header.propTypes = {
   price: PropTypes.number.isRequired,
   priceRatio: PropTypes.number.isRequired,
   landsCount: PropTypes.number.isRequired,
+  newLandsCount: PropTypes.number.isRequired,
   landsCountRatio: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   updatedAt: PropTypes.string.isRequired
