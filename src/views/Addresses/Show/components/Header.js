@@ -39,12 +39,12 @@ const Header = ({
           </CardHeader>
           <CardBody>
             <GridContainer>
-              <GridItem xs={12} md={6}>
+              <GridItem xs={12} md={4}>
                 <p className={classes.detailText}>
                   {t("New lands")}: {numeral(newLandsCount).format("0,0")}
                 </p>
               </GridItem>
-              <GridItem xs={12} md={6}>
+              <GridItem xs={12} md={4}>
                 <p className={classes.detailText}>
                   {t("Price")}: {numeral(price).format("0,0")} VND/m²{" "}
                   <i>
@@ -53,7 +53,7 @@ const Header = ({
                   </i>
                 </p>
               </GridItem>
-              <GridItem xs={12} md={6}>
+              <GridItem xs={12} md={4}>
                 <p className={classes.detailText}>
                   {t("Lands")}: {numeral(landsCount).format("0,0")}{" "}
                   <i>
