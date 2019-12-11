@@ -19,3 +19,12 @@ export const titleize = str => {
   }
   return str.join(" ");
 };
+
+export const truncate = (text, length = 10) => {
+  let cutText = text.substring(0, length);
+  if (text.length > length) {
+    cutText += "...";
+  }
+
+  return cutText;
+};

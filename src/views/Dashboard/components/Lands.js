@@ -12,10 +12,12 @@ import CardBody from "components/Card/CardBody.js";
 import { useTranslation } from "react-i18next";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
+import Tooltip from "@material-ui/core/Tooltip";
 import { landStyles as styles } from "../styles";
 import Land from "./Land";
 import { useOrdering } from "../../hooks";
 import Loading from "components/Loading";
+import { truncate } from "utils";
 
 const useStyles = makeStyles(styles);
 
@@ -129,7 +131,9 @@ const TopLands = ({
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
                 onClick={() => setOrder("history_prices_count")}
               >
-                {t("Change times")}
+                <Tooltip title={t("Change times")}>
+                  <p>{truncate(t("Change times"))}</p>
+                </Tooltip>
               </TableCell>
             </TableRow>
           </TableHead>
