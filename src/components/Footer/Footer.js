@@ -1,11 +1,11 @@
 /*eslint-disable*/
 import React from "react";
-import PropTypes from "prop-types";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 import { useTranslation } from "react-i18next";
+import { Link } from 'react-router-dom';
 // core components
 import styles from "assets/jss/material-dashboard-react/components/footerStyle.js";
 
@@ -29,13 +29,12 @@ export default function Footer(props) {
               </a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <a
-                href="https://www.visualcv.com/dthtien1"
+              <Link
+              to="/app/cv"
                 className={classes.block}
-                target="_blank"
               >
-                CV
-              </a>
+                About me
+              </Link>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
               <a onClick={() => changeLanguage("vn")} className={classes.block}>Tiếng Việt</a>
