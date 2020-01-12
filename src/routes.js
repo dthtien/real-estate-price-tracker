@@ -77,7 +77,7 @@ const dashboardRoutes = [
     hide: process.env.NODE_ENV !== "development"
   },
   {
-    path: "/icons",
+    path: "/app/icons",
     name: "Icons",
     icon: BubbleChart,
     component: Icons,
