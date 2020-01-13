@@ -15,4 +15,10 @@ const makeSelectLands = () =>
     selectAddressesShowStateState => selectAddressesShowStateState.lands
   );
 
-export { makeSelectAddressDetail, makeSelectLands };
+const makeSelectPriceLoggers = () =>
+  createSelector(
+    selectAddressesShowState,
+    selectAddressesShowStateState => selectAddressesShowStateState.priceLoggers
+  );
+
+export { makeSelectAddressDetail, makeSelectLands, makeSelectPriceLoggers };

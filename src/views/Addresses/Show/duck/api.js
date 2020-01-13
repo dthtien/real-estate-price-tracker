@@ -15,3 +15,11 @@ export const getLands = (params = {}) =>
     .catch(err => {
       throw err.response;
     });
+
+export const getPriceLoggers = (params = {}) =>
+  httpClient()
+    .get(`addresses/${params.id}/price_loggers`, { params })
+    .then(response => response.data)
+    .catch(err => {
+      throw err.response;
+    });

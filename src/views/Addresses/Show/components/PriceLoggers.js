@@ -12,28 +12,24 @@ import CardBody from "components/Card/CardBody.js";
 import { useTranslation } from "react-i18next";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
-import Tooltip from "@material-ui/core/Tooltip";
-import { landStyles as styles } from "../styles";
-import Land from "./Land";
-import { useOrdering } from "../../hooks";
+import { landStyles as styles } from "views/Dashboard/styles";
+import PriceLogger from "./PriceLogger";
+import { useOrdering } from "views/hooks";
 import Loading from "components/Loading";
-import { truncate } from "utils";
 
 const useStyles = makeStyles(styles);
 
-const TopLands = ({
-  lands: { data, loading },
-  updatedAt,
-  loadLands,
-  addresses,
-  landsCount
+const PriceLoggers = ({
+  loadPriceLoggers,
+  priceLoggers: { data, loading },
+  addressId
 }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [order, setOrder] = useOrdering();
   const [currentPage, setCurrentPage] = useState(0);
   useEffect(() => {
-    loadLands({ address_names: addresses, page: currentPage, order });
+    loadPriceLoggers({ id: addressId, page: currentPage, order });
   }, [currentPage, order]);
 
   const handlePageChange = (_, page) => {
@@ -59,18 +55,18 @@ const TopLands = ({
           <td>
             <Loading type="textRow" />
           </td>
-          <td>
-            <Loading type="textRow" />
-          </td>
         </tr>
       );
     }
 
     if (data) {
+      const {
+        price_loggers: { data: price_loggers }
+      } = data;
       return (
         <>
-          {data.lands.map(({ id, attributes }) => (
-            <Land land={attributes} key={id} classes={classes} />
+          {price_loggers.map(({ id, attributes }) => (
+            <PriceLogger priceLogger={attributes} key={id} classes={classes} />
           ))}
         </>
       );
@@ -90,7 +86,7 @@ const TopLands = ({
       <CardHeader color="warning" className={classes.cardTitle}>
         {data && (
           <TablePagination
-            count={landsCount}
+            count={data.count}
             rowsPerPage={25}
             page={currentPage}
             onChangePage={handlePageChange}
@@ -98,10 +94,7 @@ const TopLands = ({
             component="div"
           />
         )}
-        <h4 className={classes.cardTitleWhite}>{t("Lands")}</h4>
-        <p className={classes.cardCategoryWhite}>
-          {t("Updated at")} {updatedAt}
-        </p>
+        <h4 className={classes.cardTitleWhite}>{t("History Price")}</h4>
       </CardHeader>
       <CardBody className={classes.tableContent}>
         <Table className={classes.tableResponsive}>
@@ -116,35 +109,12 @@ const TopLands = ({
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
               >
-                {t("Description")}
+                {t("Total selling lands")}
               </TableCell>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
-                onClick={() => setOrder("acreage")}
               >
-                m²
-              </TableCell>
-              <TableCell
-                className={`${classes.tableCell} ${classes.tableHeadCell}`}
-                onClick={() => setOrder("square_meter_price")}
-              >
-                {t("Price")} (m²)
-              </TableCell>
-              <TableCell
-                className={`${classes.tableCell} ${classes.tableHeadCell}`}
-                onClick={() => setOrder("history_prices_count")}
-              >
-                <Tooltip title={t("Change times")}>
-                  <p>{truncate(t("Change times"))}</p>
-                </Tooltip>
-              </TableCell>
-              <TableCell
-                className={`${classes.tableCell} ${classes.tableHeadCell}`}
-                onClick={() => setOrder("post_date")}
-              >
-                <Tooltip title={t("Posted date")}>
-                  <p>{truncate(t("Posted date"))}</p>
-                </Tooltip>
+                {t("Logging date")}
               </TableCell>
             </TableRow>
           </TableHead>
@@ -155,12 +125,10 @@ const TopLands = ({
   );
 };
 
-TopLands.propTypes = {
-  lands: PropTypes.object.isRequired,
-  updatedAt: PropTypes.string,
-  loadLands: PropTypes.func.isRequired,
-  addresses: PropTypes.array,
-  landsCount: PropTypes.number.isRequired
+PriceLoggers.propTypes = {
+  loadPriceLoggers: PropTypes.func.isRequired,
+  priceLoggers: PropTypes.object,
+  addressId: PropTypes.string.isRequired
 };
 
-export default memo(TopLands);
+export default memo(PriceLoggers);

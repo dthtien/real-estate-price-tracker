@@ -135,25 +135,19 @@ function Dashboard({
           newLandsCount={attrs.new_lands_count}
           updatedAt={gotTime}
         />
-        <GridContainer>
-          <GridItem xs={12} sm={12} md={5}>
-            <Addresses
-              addresses={subAddresses}
-              updatedAt={gotTime}
-              ordering={setOrder}
-            />
-          </GridItem>
-          <GridItem xs={12} sm={12} md={7}>
-            <Lands
-              classes={classes}
-              lands={lands}
-              updatedAt={gotTime}
-              loadLands={loadLands}
-              addresses={params.address_names}
-              landsCount={attrs.lands_count}
-            />
-          </GridItem>
-        </GridContainer>
+        <Addresses
+          addresses={subAddresses}
+          updatedAt={gotTime}
+          ordering={setOrder}
+        />
+        <Lands
+          classes={classes}
+          lands={lands}
+          updatedAt={gotTime}
+          loadLands={loadLands}
+          addresses={params.address_names}
+          landsCount={attrs.lands_count}
+        />
       </>
     );
   }

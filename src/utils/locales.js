@@ -65,7 +65,10 @@ export const locales = {
       "Change times": "Số lần thay đổi giá",
       "Feet square": "Diện tích",
       "Price logs": "Lịch sử giá",
-      title: "TopLands - Trang thống kê giá đất ở thành phố Hồ Chí Minh"
+      title: "TopLands - Trang thống kê giá đất ở thành phố Hồ Chí Minh",
+      "Posted date": "Ngày đăng",
+      "Logging date": "Ngày lưu",
+      "History Price": "Lịch sử giá"
     }
   }
 };

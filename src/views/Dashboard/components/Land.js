@@ -28,6 +28,9 @@ const Land = ({ land, classes, history }) => {
       <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
         {land.change_times}
       </TableCell>
+      <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
+        {land.post_date}
+      </TableCell>
     </TableRow>
   );
 };

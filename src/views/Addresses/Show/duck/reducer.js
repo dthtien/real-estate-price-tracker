@@ -5,7 +5,10 @@ import {
   LOAD_ERROR,
   LOAD_LANDS,
   LOAD_LANDS_SUCCESS,
-  LOAD_LANDS_ERROR
+  LOAD_LANDS_ERROR,
+  LOAD_PRICE_LOGGERS,
+  LOAD_PRICE_LOGGERS_SUCCESS,
+  LOAD_PRICE_LOGGERS_ERROR
 } from "./types";
 
 export const initialState = {
@@ -15,6 +18,11 @@ export const initialState = {
     data: null
   },
   lands: {
+    loading: false,
+    error: false,
+    data: null
+  },
+  priceLoggers: {
     loading: false,
     error: false,
     data: null
@@ -60,6 +68,24 @@ const reducer = (state = initialState, action = {}) =>
         draft.lands.loading = false;
         draft.lands.error = true;
         draft.lands.data = null;
+        break;
+
+      case LOAD_PRICE_LOGGERS:
+        draft.priceLoggers.loading = true;
+        draft.priceLoggers.error = false;
+        draft.priceLoggers.data = null;
+        break;
+
+      case LOAD_PRICE_LOGGERS_SUCCESS:
+        draft.priceLoggers.loading = false;
+        draft.priceLoggers.error = false;
+        draft.priceLoggers.data = action.payload;
+        break;
+
+      case LOAD_PRICE_LOGGERS_ERROR:
+        draft.priceLoggers.loading = false;
+        draft.priceLoggers.error = true;
+        draft.priceLoggers.data = null;
         break;
     }
   });

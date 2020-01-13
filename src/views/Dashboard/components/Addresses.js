@@ -74,7 +74,7 @@ Addresses.defaultPropTypes = {
 };
 
 Addresses.propTypes = {
-  updatedAt: PropTypes.string.isRequired,
+  updatedAt: PropTypes.string,
   addresses: PropTypes.array.isRequired,
   ordering: PropTypes.func
 };

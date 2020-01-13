@@ -6,9 +6,11 @@ import reducer, {
   reducerName as key,
   load,
   loadLands,
+  loadPriceLoggers,
   saga,
   makeSelectAddressDetail,
-  makeSelectLands
+  makeSelectLands,
+  makeSelectPriceLoggers
 } from "./duck";
 import { Header, Lands, Addresses } from "./components";
 import Card from "components/Card/Card.js";
@@ -24,6 +26,9 @@ import styles from "./styles";
 import { useOrdering } from "../../hooks";
 import Loading from "components/Loading";
 import CustomHeader from "components/Header";
+import PriceLoggers from "./components/PriceLoggers";
+import GridContainer from "components/Grid/GridContainer";
+import GridItem from "components/Grid/GridItem";
 
 const useStyles = makeStyles(styles);
 
@@ -32,7 +37,9 @@ const Show = ({
   load,
   loadLands,
   address: { data, loading },
-  lands
+  lands,
+  priceLoggers,
+  loadPriceLoggers
 }) => {
   const classes = useStyles();
   const { t } = useTranslation();
@@ -70,22 +77,33 @@ const Show = ({
           newLandsCount={attributes.new_lands_count}
         />
         {sub_addresses.length > 0 && (
-          <>
-            <Card chart>
-              <CardHeader className={classes.chartContent}>
-                <LineChart data={chartData} chartKey="price" />
-              </CardHeader>
-              <CardBody>
-                <h4 className={classes.cardTitle}>{t("chartTitle")}</h4>
-              </CardBody>
-            </Card>
-            <Addresses
-              addresses={attributes.sub_addresses}
-              updatedAt={attributes.logged_date}
-              ordering={setOrder}
-            />
-          </>
+          <Card chart>
+            <CardHeader className={classes.chartContent}>
+              <LineChart data={chartData} chartKey="price" />
+            </CardHeader>
+            <CardBody>
+              <h4 className={classes.cardTitle}>{t("chartTitle")}</h4>
+            </CardBody>
+          </Card>
         )}
+        <GridContainer>
+          {sub_addresses.length > 0 && (
+            <GridItem xs={12} sm={12} md={6}>
+              <Addresses
+                addresses={attributes.sub_addresses}
+                updatedAt={attributes.logged_date}
+                ordering={setOrder}
+              />
+            </GridItem>
+          )}
+          <GridItem xs={12} sm={12} md={6}>
+            <PriceLoggers
+              priceLoggers={priceLoggers}
+              loadPriceLoggers={loadPriceLoggers}
+              addressId={params.id}
+            />
+          </GridItem>
+        </GridContainer>
         <Lands
           updatedAt={attributes.logged_date}
           loadLands={loadLands}
@@ -103,19 +121,23 @@ const Show = ({
 Show.propTypes = {
   match: PropTypes.object.isRequired,
   load: PropTypes.func.isRequired,
+  loadPriceLoggers: PropTypes.func.isRequired,
   loadLands: PropTypes.func.isRequired,
   address: PropTypes.object.isRequired,
-  lands: PropTypes.object.isRequired
+  lands: PropTypes.object.isRequired,
+  priceLoggers: PropTypes.object.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
   address: makeSelectAddressDetail(),
-  lands: makeSelectLands()
+  lands: makeSelectLands(),
+  priceLoggers: makeSelectPriceLoggers()
 });
 
 const mapDispatchToProps = {
   load,
-  loadLands
+  loadLands,
+  loadPriceLoggers
 };
 
 const withConnect = connect(

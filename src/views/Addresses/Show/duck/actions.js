@@ -4,7 +4,10 @@ import {
   LOAD_SUCCESS,
   LOAD_LANDS,
   LOAD_LANDS_SUCCESS,
-  LOAD_LANDS_ERROR
+  LOAD_LANDS_ERROR,
+  LOAD_PRICE_LOGGERS,
+  LOAD_PRICE_LOGGERS_SUCCESS,
+  LOAD_PRICE_LOGGERS_ERROR
 } from "./types";
 
 export const load = payload => ({
@@ -34,5 +37,20 @@ export const loadLandsSuccess = payload => ({
 
 export const loadLandsError = payload => ({
   type: LOAD_LANDS_ERROR,
+  payload
+});
+
+export const loadPriceLoggers = payload => ({
+  type: LOAD_PRICE_LOGGERS,
+  payload
+});
+
+export const loadPriceLoggersSuccess = payload => ({
+  type: LOAD_PRICE_LOGGERS_SUCCESS,
+  payload
+});
+
+export const loadPriceLoggersError = payload => ({
+  type: LOAD_PRICE_LOGGERS_ERROR,
   payload
 });

@@ -80,13 +80,13 @@ const Header = ({
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
-  price: PropTypes.number.isRequired,
-  priceRatio: PropTypes.number.isRequired,
+  price: PropTypes.string.isRequired,
+  priceRatio: PropTypes.string.isRequired,
   landsCount: PropTypes.number.isRequired,
   newLandsCount: PropTypes.number.isRequired,
   landsCountRatio: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  updatedAt: PropTypes.string.isRequired
+  updatedAt: PropTypes.string
 };
 
 export default Header;

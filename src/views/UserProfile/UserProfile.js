@@ -4,14 +4,12 @@ import { makeStyles } from "@material-ui/core/styles";
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
-import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
 
 import avatar from "assets/img/profile.jpg";
 import cv from "assets/img/cv.pdf";
-import { CardActions, Icon } from "@material-ui/core";
 
 const styles = {
   cardCategoryWhite: {
