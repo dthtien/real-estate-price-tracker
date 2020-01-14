@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { createBrowserHistory } from "history";
+import ReactGA from 'react-ga';
 import { Router, Route, Switch } from "react-router-dom";
 import WebFont from "webfontloader";
 import { Provider } from "react-redux";
@@ -27,6 +28,8 @@ WebFont.load({
     ]
   }
 });
+
+ReactGA.initialize("UA-156171719-1");
 
 const App = () => {
   const { t } = useTranslation();

@@ -1,12 +1,13 @@
 import { combineReducers, applyMiddleware, createStore, compose } from "redux";
 import reducerRegistry from "./reducerRegistry";
 import createSagaMiddleware from "redux-saga";
+import { googleAnalytics } from "./googleAnalyticsMiddleware";
 
 export const sagaMiddleware = createSagaMiddleware();
 
 const initialState = {};
 const enhancers = [];
-const middleware = [sagaMiddleware];
+const middleware = [sagaMiddleware, googleAnalytics];
 
 if (process.env.NODE_ENV === "development") {
   // eslint-disable-next-line no-underscore-dangle

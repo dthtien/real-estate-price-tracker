@@ -20,6 +20,7 @@
     "query-string": "^6.8.3",
     "react": "16.9.0",
     "react-dom": "16.9.0",
+    "react-ga": "^2.7.0",
     "react-helmet": "^5.2.1",
     "react-i18next": "^11.2.2",
     "react-placeholder": "^3.0.2",
