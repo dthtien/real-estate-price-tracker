@@ -28,6 +28,11 @@ const styles = {
   },
   priceRange: {
     marginTop: "1em"
+  },
+  detailLink: {
+    float: "right",
+    textTransform: "inherit",
+    color: "##252525"
   }
 };
 

@@ -68,7 +68,8 @@ export const locales = {
       title: "TopLands - Trang thống kê giá đất ở thành phố Hồ Chí Minh",
       "Posted date": "Ngày đăng",
       "Logging date": "Ngày lưu",
-      "History Price": "Lịch sử giá"
+      "History Price": "Lịch sử giá",
+      "More detail": "Xem thêm thông tin ở đây"
     }
   }
 };

@@ -56,6 +56,7 @@ const Show = ({
             updatedAt={attributes.updated_at}
             historyPricesData={historyPricesData}
             description={attributes.description}
+            sourceUrl={attributes.source_url}
           />
           <HistoryPrices
             loadHistoryPrices={loadHistoryPrices}

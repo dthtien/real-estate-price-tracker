@@ -13,6 +13,8 @@ import CardIcon from "components/Card/CardIcon.js";
 import CardFooter from "components/Card/CardFooter.js";
 import CardBody from "components/Card/CardBody";
 import Typography from "@material-ui/core/Typography";
+import { Button } from "@material-ui/core";
+const bdsUrl = "https://batdongsan.com.vn";
 const Header = ({
   classes,
   title,
@@ -20,7 +22,8 @@ const Header = ({
   feetSquare,
   feetSquarePrice,
   historyPricesData,
-  description
+  description,
+  sourceUrl
 }) => {
   const { t } = useTranslation();
   return (
@@ -81,8 +84,16 @@ const Header = ({
             </GridContainer>
           </CardBody>
           <CardFooter stats>
-            <div className={classes.stats}>
+            <div>
               <Typography variant="body1">{description}</Typography>
+              <Button
+                href={bdsUrl + sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={classes.detailLink}
+              >
+                {t("More detail")}...
+              </Button>
             </div>
           </CardFooter>
         </Card>
@@ -99,7 +110,8 @@ Header.propTypes = {
   title: PropTypes.string.isRequired,
   updatedAt: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  historyPricesData: PropTypes.object
+  historyPricesData: PropTypes.object,
+  sourceUrl: PropTypes.string
 };
 
 export default Header;
