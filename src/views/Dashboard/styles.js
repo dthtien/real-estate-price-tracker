@@ -54,7 +54,13 @@ export const landStyles = theme => ({
     }
   },
   priceSlider: {
-    width: "100%"
+    width: "50%",
+    "&:first-child": {
+      marginRight: 20
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "100%"
+    }
   }
 });
 

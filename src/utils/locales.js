@@ -71,7 +71,8 @@ export const locales = {
       "History Price": "Lịch sử giá",
       "More detail": "Xem thêm thông tin ở đây",
       "Posted date from": "Đăng từ ngày",
-      "Posted date to": "Đến ngày"
+      "Posted date to": "Đến ngày",
+      Acreage: "Diện tích"
     }
   }
 };

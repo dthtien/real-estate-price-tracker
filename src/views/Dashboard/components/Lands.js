@@ -17,10 +17,8 @@ import { landStyles as styles } from "../styles";
 import Land from "./Land";
 import { useOrdering } from "../../hooks";
 import Loading from "components/Loading";
-import Slider from "@material-ui/core/Slider";
-import numeral from "numeral";
-import Typography from "@material-ui/core/Typography";
 import { truncate } from "utils";
+import Filter from "./Filter";
 
 const useStyles = makeStyles(styles);
 
@@ -28,13 +26,13 @@ const TopLands = ({
   lands: { data, loading },
   updatedAt,
   loadLands,
-  addresses,
-  landsCount
+  addresses
 }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [order, setOrder] = useOrdering();
   const [priceRange, setPriceRange] = React.useState([0, 0]);
+  const [acreageRange, setAcreageRange] = React.useState([0, 0]);
   const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
@@ -42,15 +40,17 @@ const TopLands = ({
       address_names: addresses,
       page: currentPage,
       order,
-      price_range: priceRange
+      price_range: priceRange,
+      acreage_range: acreageRange
     });
-  }, [currentPage, order, priceRange]);
+  }, [currentPage, order, priceRange, acreageRange]);
 
   const handlePageChange = (_, page) => {
     setCurrentPage(page);
   };
 
   const handlePriceChange = (_, newValue) => setPriceRange(newValue);
+  const handleAcreageChange = (_, newValue) => setAcreageRange(newValue);
 
   const renderData = () => {
     if (loading) {
@@ -103,7 +103,7 @@ const TopLands = ({
         <div className={classes.cardTitle}>
           {data && (
             <TablePagination
-              count={landsCount}
+              count={data.lands_count}
               rowsPerPage={25}
               page={currentPage}
               onChangePage={handlePageChange}
@@ -116,24 +116,13 @@ const TopLands = ({
             {t("Updated at")} {updatedAt}
           </p>
         </div>
-        <form className={classes.filterForm}>
-          <div className={classes.priceSlider}>
-            <Slider
-              value={priceRange}
-              onChange={handlePriceChange}
-              valueLabelDisplay="on"
-              aria-labelledby="range-slider"
-              valueLabelFormat={value => numeral(value).format("0a")}
-              max={10 ** 11}
-              min={0}
-              color="secondary"
-            />
-            <Typography id="range-slider" gutterBottom>
-              {t("Price")}: {numeral(priceRange[0]).format("0,0")} VND &#8594;{" "}
-              {numeral(priceRange[1]).format("0,0")} VND
-            </Typography>
-          </div>
-        </form>
+        <Filter
+          classes={classes}
+          priceRange={priceRange}
+          handlePriceChange={handlePriceChange}
+          acreageRange={acreageRange}
+          handleAcreageChange={handleAcreageChange}
+        />
       </CardHeader>
       <CardBody className={classes.tableContent}>
         <Table className={classes.tableResponsive}>
