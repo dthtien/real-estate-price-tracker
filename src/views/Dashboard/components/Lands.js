@@ -17,6 +17,9 @@ import { landStyles as styles } from "../styles";
 import Land from "./Land";
 import { useOrdering } from "../../hooks";
 import Loading from "components/Loading";
+import Slider from "@material-ui/core/Slider";
+import numeral from "numeral";
+import Typography from "@material-ui/core/Typography";
 import { truncate } from "utils";
 
 const useStyles = makeStyles(styles);
@@ -31,14 +34,23 @@ const TopLands = ({
   const classes = useStyles();
   const { t } = useTranslation();
   const [order, setOrder] = useOrdering();
+  const [priceRange, setPriceRange] = React.useState([0, 0]);
   const [currentPage, setCurrentPage] = useState(0);
+
   useEffect(() => {
-    loadLands({ address_names: addresses, page: currentPage, order });
-  }, [currentPage, order]);
+    loadLands({
+      address_names: addresses,
+      page: currentPage,
+      order,
+      price_range: priceRange
+    });
+  }, [currentPage, order, priceRange]);
 
   const handlePageChange = (_, page) => {
     setCurrentPage(page);
   };
+
+  const handlePriceChange = (_, newValue) => setPriceRange(newValue);
 
   const renderData = () => {
     if (loading) {
@@ -87,21 +99,41 @@ const TopLands = ({
 
   return (
     <Card>
-      <CardHeader color="warning" className={classes.cardTitle}>
-        {data && (
-          <TablePagination
-            count={landsCount}
-            rowsPerPage={25}
-            page={currentPage}
-            onChangePage={handlePageChange}
-            rowsPerPageOptions={[]}
-            component="div"
-          />
-        )}
-        <h4 className={classes.cardTitleWhite}>{t("Lands")}</h4>
-        <p className={classes.cardCategoryWhite}>
-          {t("Updated at")} {updatedAt}
-        </p>
+      <CardHeader color="info">
+        <div className={classes.cardTitle}>
+          {data && (
+            <TablePagination
+              count={landsCount}
+              rowsPerPage={25}
+              page={currentPage}
+              onChangePage={handlePageChange}
+              rowsPerPageOptions={[]}
+              component="div"
+            />
+          )}
+          <h4 className={classes.cardTitleWhite}>{t("Lands")}</h4>
+          <p className={classes.cardCategoryWhite}>
+            {t("Updated at")} {updatedAt}
+          </p>
+        </div>
+        <form className={classes.filterForm}>
+          <div className={classes.priceSlider}>
+            <Slider
+              value={priceRange}
+              onChange={handlePriceChange}
+              valueLabelDisplay="on"
+              aria-labelledby="range-slider"
+              valueLabelFormat={value => numeral(value).format("0a")}
+              max={10 ** 11}
+              min={0}
+              color="secondary"
+            />
+            <Typography id="range-slider" gutterBottom>
+              {t("Price")}: {numeral(priceRange[0]).format("0,0")} VND &#8594;{" "}
+              {numeral(priceRange[1]).format("0,0")} VND
+            </Typography>
+          </div>
+        </form>
       </CardHeader>
       <CardBody className={classes.tableContent}>
         <Table className={classes.tableResponsive}>

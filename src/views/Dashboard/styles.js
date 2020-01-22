@@ -21,7 +21,7 @@ const styles = {
   }
 };
 
-export const landStyles = {
+export const landStyles = theme => ({
   ...tableCommonStyle,
   tableContent: {
     overflow: "auto",
@@ -42,7 +42,20 @@ export const landStyles = {
   clickable: {
     cursor: "pointer",
     textDecoration: "underline"
+  },
+  filterForm: {
+    display: "flex",
+    marginTop: 10,
+    "& svg": {
+      color: "white"
+    },
+    [theme.breakpoints.down("sm")]: {
+      display: "block"
+    }
+  },
+  priceSlider: {
+    width: "100%"
   }
-};
+});
 
 export default styles;

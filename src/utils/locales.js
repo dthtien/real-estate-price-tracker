@@ -69,7 +69,9 @@ export const locales = {
       "Posted date": "Ngày đăng",
       "Logging date": "Ngày lưu",
       "History Price": "Lịch sử giá",
-      "More detail": "Xem thêm thông tin ở đây"
+      "More detail": "Xem thêm thông tin ở đây",
+      "Posted date from": "Đăng từ ngày",
+      "Posted date to": "Đến ngày"
     }
   }
 };
