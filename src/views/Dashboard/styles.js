@@ -43,6 +43,12 @@ export const landStyles = theme => ({
     cursor: "pointer",
     textDecoration: "underline"
   },
+  link: {
+    color: "#3273DC",
+    "&:hover": {
+      color: "#4b82da"
+    }
+  },
   filterForm: {
     display: "flex",
     marginTop: 10,

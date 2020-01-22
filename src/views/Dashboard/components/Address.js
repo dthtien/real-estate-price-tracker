@@ -3,18 +3,16 @@ import PropTypes from "prop-types";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import numeral from "numeral";
-import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { titleize } from "utils";
 
-const Address = ({ address, classes, history }) => {
+const Address = ({ address, classes }) => {
   return (
-    <TableRow
-      onClick={() => history.push(`/app/addresses/${address.slug}`)}
-      className={classes.addressDetail}
-      hover
-    >
+    <TableRow className={classes.addressDetail} hover>
       <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
-        {titleize(address.name)}
+        <Link className={classes.link} to={`/app/addresses/${address.slug}`}>
+          {titleize(address.name)}
+        </Link>
       </TableCell>
       <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
         {numeral(address.price).format("0a")} VND/m²
@@ -28,8 +26,7 @@ const Address = ({ address, classes, history }) => {
 
 Address.propTypes = {
   address: PropTypes.object.isRequired,
-  classes: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired
 };
 
-export default memo(withRouter(Address));
+export default memo(Address);

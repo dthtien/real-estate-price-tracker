@@ -3,21 +3,19 @@ import PropTypes from "prop-types";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import numeral from "numeral";
-import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { capitalize } from "utils";
 
-const Land = ({ land, classes, history }) => {
+const Land = ({ land, classes }) => {
   return (
-    <TableRow
-      onClick={() => history.push(`/app/lands/${land.slug}`)}
-      className={classes.landDetail}
-      hover
-    >
+    <TableRow className={classes.landDetail} hover>
       <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
         {numeral(land.total_price).format("0a")} VND
       </TableCell>
       <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
-        {capitalize(land.title)}
+        <Link className={classes.link} to={`/app/lands/${land.slug}`}>
+          {capitalize(land.title)}
+        </Link>
       </TableCell>
       <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
         {land.acreage} m²
@@ -37,8 +35,7 @@ const Land = ({ land, classes, history }) => {
 
 Land.propTypes = {
   land: PropTypes.object.isRequired,
-  classes: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired
 };
 
-export default memo(withRouter(Land));
+export default memo(Land);
