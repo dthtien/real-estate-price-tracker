@@ -33,17 +33,36 @@ const TopLands = ({
   const [order, setOrder] = useOrdering();
   const [priceRange, setPriceRange] = React.useState([0, 0]);
   const [acreageRange, setAcreageRange] = React.useState([0, 0]);
+  const [fontLengthRange, setFrontLengthRange] = React.useState([0, 0]);
+  const [classifications, setClassifications] = React.useState([]);
   const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
-    loadLands({
+    let params = {
       address_names: addresses,
       page: currentPage,
       order,
       price_range: priceRange,
-      acreage_range: acreageRange
-    });
-  }, [currentPage, order, priceRange, acreageRange]);
+      acreage_range: acreageRange,
+      front_length: fontLengthRange
+    };
+
+    if (classifications.length > 0) {
+      params = {
+        ...params,
+        classifications
+      };
+    }
+
+    loadLands(params);
+  }, [
+    currentPage,
+    order,
+    priceRange,
+    acreageRange,
+    fontLengthRange,
+    classifications
+  ]);
 
   const handlePageChange = (_, page) => {
     setCurrentPage(page);
@@ -51,27 +70,35 @@ const TopLands = ({
 
   const handlePriceChange = (_, newValue) => setPriceRange(newValue);
   const handleAcreageChange = (_, newValue) => setAcreageRange(newValue);
+  const handleFrontLengthChange = (_, newValue) =>
+    setFrontLengthRange(newValue);
+  const handleClassificationsChange = event => {
+    setClassifications(event.target.value);
+  };
 
   const renderData = () => {
     if (loading) {
       return (
         <tr>
-          <td>
+          <td key={1}>
             <Loading type="textRow" />
           </td>
-          <td>
+          <td key={2}>
             <Loading type="textRow" />
           </td>
-          <td>
+          <td key={3}>
             <Loading type="textRow" />
           </td>
-          <td>
+          <td key={4}>
             <Loading type="textRow" />
           </td>
-          <td>
+          <td key={5}>
             <Loading type="textRow" />
           </td>
-          <td>
+          <td key={6}>
+            <Loading type="textRow" />
+          </td>
+          <td key={6}>
             <Loading type="textRow" />
           </td>
         </tr>
@@ -122,6 +149,10 @@ const TopLands = ({
           handlePriceChange={handlePriceChange}
           acreageRange={acreageRange}
           handleAcreageChange={handleAcreageChange}
+          fontLengthRange={fontLengthRange}
+          handleFrontLengthChange={handleFrontLengthChange}
+          classifications={classifications}
+          handleClassificationsChange={handleClassificationsChange}
         />
       </CardHeader>
       <CardBody className={classes.tableContent}>
@@ -165,6 +196,14 @@ const TopLands = ({
               >
                 <Tooltip title={t("Posted date")}>
                   <p>{truncate(t("Posted date"))}</p>
+                </Tooltip>
+              </TableCell>
+              <TableCell
+                className={`${classes.tableCell} ${classes.tableHeadCell}`}
+                onClick={() => setOrder("classification")}
+              >
+                <Tooltip title={t("Classification")}>
+                  <p>{truncate(t("Classification"))}</p>
                 </Tooltip>
               </TableCell>
             </TableRow>

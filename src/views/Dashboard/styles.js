@@ -25,7 +25,7 @@ export const landStyles = theme => ({
   ...tableCommonStyle,
   tableContent: {
     overflow: "auto",
-    height: 300
+    height: 500
   },
   cardTitle: {
     "& div": {
@@ -49,7 +49,7 @@ export const landStyles = theme => ({
       color: "#4b82da"
     }
   },
-  filterForm: {
+  filterFormItem: {
     display: "flex",
     marginTop: 10,
     "& svg": {
@@ -58,6 +58,9 @@ export const landStyles = theme => ({
     [theme.breakpoints.down("sm")]: {
       display: "block"
     }
+  },
+  chip: {
+    marginRight: 5
   },
   priceSlider: {
     width: "50%",

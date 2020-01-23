@@ -72,7 +72,9 @@ export const locales = {
       "More detail": "Xem thêm thông tin ở đây",
       "Posted date from": "Đăng từ ngày",
       "Posted date to": "Đến ngày",
-      Acreage: "Diện tích"
+      Acreage: "Diện tích",
+      "Front length": "Mặt tiền",
+      Classification: "Loại BDS"
     }
   }
 };
