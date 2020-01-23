@@ -91,6 +91,9 @@ const Filter = ({
             handleChange={handleClassificationsChange}
             classes={classes}
           />
+          <Typography className={classes.classificationText}>
+            {t("Classification")}
+          </Typography>
         </div>
       </div>
     </>

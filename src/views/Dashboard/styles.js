@@ -62,6 +62,9 @@ export const landStyles = theme => ({
   chip: {
     marginRight: 5
   },
+  classificationText: {
+    marginTop: 10
+  },
   priceSlider: {
     width: "50%",
     "&:first-child": {
