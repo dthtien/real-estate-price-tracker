@@ -98,7 +98,7 @@ const TopLands = ({
           <td key={6}>
             <Loading type="textRow" />
           </td>
-          <td key={6}>
+          <td key={7}>
             <Loading type="textRow" />
           </td>
         </tr>
@@ -204,6 +204,14 @@ const TopLands = ({
               >
                 <Tooltip title={t("Classification")}>
                   <p>{truncate(t("Classification"))}</p>
+                </Tooltip>
+              </TableCell>
+              <TableCell
+                className={`${classes.tableCell} ${classes.tableHeadCell}`}
+                onClick={() => setOrder("front_length")}
+              >
+                <Tooltip title={t("Front length")}>
+                  <p>{truncate(t("Front length"))}</p>
                 </Tooltip>
               </TableCell>
             </TableRow>

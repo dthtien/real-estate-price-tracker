@@ -11,11 +11,11 @@ const MultipleSelect = ({
   handleChange,
   value,
   id,
-  labelId,
+  labelid,
   fullWidth
 }) => (
   <Select
-    labelId={labelId}
+    labelid={labelid}
     id={id}
     multiple
     value={value}
@@ -44,7 +44,7 @@ const MultipleSelect = ({
 
 MultipleSelect.defaultProps = {
   id: "multiple-select",
-  labelId: "multiple-select-label",
+  labelid: "multiple-select-label",
   fullWidth: true
 };
 
@@ -54,7 +54,7 @@ MultipleSelect.propTypes = {
   handleChange: PropTypes.func.isRequired,
   value: PropTypes.array.isRequired,
   id: PropTypes.string,
-  labelId: PropTypes.string,
+  labelid: PropTypes.string,
   fullWidth: PropTypes.bool
 };
 

@@ -57,6 +57,8 @@ const Show = ({
             historyPricesData={historyPricesData}
             description={attributes.description}
             sourceUrl={attributes.source_url}
+            frontLength={attributes.front_length}
+            classification={attributes.classification}
           />
           <HistoryPrices
             loadHistoryPrices={loadHistoryPrices}

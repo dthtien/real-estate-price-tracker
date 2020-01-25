@@ -32,6 +32,11 @@ const Land = ({ land, classes }) => {
       <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
         {land.classification}
       </TableCell>
+      <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
+        {land.front_length !== null &&
+          land.front_length !== 0 &&
+          `${land.front_length} m`}
+      </TableCell>
     </TableRow>
   );
 };

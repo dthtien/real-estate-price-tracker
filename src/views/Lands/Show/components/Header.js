@@ -23,7 +23,9 @@ const Header = ({
   feetSquarePrice,
   historyPricesData,
   description,
-  sourceUrl
+  sourceUrl,
+  frontLength,
+  classification
 }) => {
   const { t } = useTranslation();
   return (
@@ -86,6 +88,16 @@ const Header = ({
           <CardFooter stats>
             <div>
               <Typography variant="body1">{description}</Typography>
+              <Typography variant="body1">
+                <strong>{t("Classification")}: </strong>
+                {classification}
+              </Typography>
+              {frontLength && frontLength !== 0 && (
+                <Typography variant="body1">
+                  <strong>{t("Front length")}: </strong>
+                  {frontLength}m
+                </Typography>
+              )}
               <Button
                 href={bdsUrl + sourceUrl}
                 target="_blank"
@@ -111,7 +123,9 @@ Header.propTypes = {
   updatedAt: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   historyPricesData: PropTypes.object,
-  sourceUrl: PropTypes.string
+  sourceUrl: PropTypes.string,
+  frontLength: PropTypes.number,
+  classification: PropTypes.string
 };
 
 export default Header;
