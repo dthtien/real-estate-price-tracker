@@ -13,11 +13,14 @@ import { useTranslation } from "react-i18next";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import Tooltip from "@material-ui/core/Tooltip";
+import { withRouter } from "react-router-dom";
+import qs from "query-string";
+
 import { landStyles as styles } from "../styles";
 import Land from "./Land";
 import { useOrdering } from "../../hooks";
 import Loading from "components/Loading";
-import { truncate } from "utils";
+import { truncate, toQueryString } from "utils";
 import Filter from "./Filter";
 
 const useStyles = makeStyles(styles);
@@ -26,26 +29,35 @@ const TopLands = ({
   lands: { data, loading },
   updatedAt,
   loadLands,
-  addresses
+  addresses,
+  history,
+  location: { search }
 }) => {
+  const searchingParams = {
+    ...qs.parse(search),
+    order: '{ "created_at": "desc" }'
+  };
+  console.log("URLSearchParams", searchingParams);
   const classes = useStyles();
   const { t } = useTranslation();
-  const [order, setOrder] = useOrdering();
+  const [order, setOrder] = useOrdering(JSON.parse(searchingParams.order));
   const [priceRange, setPriceRange] = React.useState([0, 0]);
   const [acreageRange, setAcreageRange] = React.useState([0, 0]);
   const [fontLengthRange, setFrontLengthRange] = React.useState([0, 0]);
   const [classifications, setClassifications] = React.useState([]);
   const [currentPage, setCurrentPage] = useState(0);
+  const parsingParams = (condition = {}) => ({
+    address_names: addresses,
+    page: currentPage,
+    order,
+    price_range: priceRange,
+    acreage_range: acreageRange,
+    front_length: fontLengthRange,
+    ...condition
+  });
 
   useEffect(() => {
-    let params = {
-      address_names: addresses,
-      page: currentPage,
-      order,
-      price_range: priceRange,
-      acreage_range: acreageRange,
-      front_length: fontLengthRange
-    };
+    let params = parsingParams();
 
     if (classifications.length > 0) {
       params = {
@@ -63,17 +75,38 @@ const TopLands = ({
     fontLengthRange,
     classifications
   ]);
+  const handleConditionChange = condition => {
+    const queryString = toQueryString(parsingParams(condition));
+    history.push({
+      pathname: window.location.pathname,
+      search: queryString
+    });
+  };
 
   const handlePageChange = (_, page) => {
     setCurrentPage(page);
+    handleConditionChange({ page });
   };
 
-  const handlePriceChange = (_, newValue) => setPriceRange(newValue);
-  const handleAcreageChange = (_, newValue) => setAcreageRange(newValue);
-  const handleFrontLengthChange = (_, newValue) =>
+  const handlePriceChange = (_, newValue) => {
+    setPriceRange(newValue);
+    handleConditionChange({ price_range: newValue });
+  };
+
+  const handleAcreageChange = (_, newValue) => {
+    setAcreageRange(newValue);
+    handleConditionChange({ acreage_range: newValue });
+  };
+
+  const handleFrontLengthChange = (_, newValue) => {
     setFrontLengthRange(newValue);
+    handleConditionChange({ front_length: newValue });
+  };
+
   const handleClassificationsChange = event => {
-    setClassifications(event.target.value);
+    const value = event.target.value;
+    setClassifications(value);
+    handleConditionChange({ classifications: value });
   };
 
   const renderData = () => {
@@ -225,10 +258,12 @@ const TopLands = ({
 
 TopLands.propTypes = {
   lands: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
   updatedAt: PropTypes.string,
   loadLands: PropTypes.func.isRequired,
   addresses: PropTypes.array,
   landsCount: PropTypes.number.isRequired
 };
 
-export default memo(TopLands);
+export default memo(withRouter(TopLands));
