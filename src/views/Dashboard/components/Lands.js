@@ -22,6 +22,7 @@ import { useOrdering } from "../../hooks";
 import Loading from "components/Loading";
 import { truncate, toQueryString } from "utils";
 import Filter from "./Filter";
+import { useClassification, useRange } from "../duck/hook";
 
 const useStyles = makeStyles(styles);
 
@@ -33,26 +34,33 @@ const TopLands = ({
   history,
   location: { search }
 }) => {
-  const searchingParams = {
-    ...qs.parse(search),
-    order: '{ "created_at": "desc" }'
-  };
-  console.log("URLSearchParams", searchingParams);
+  const searchingParams = qs.parse(search);
+  const defaultRange = [0, 0];
   const classes = useStyles();
   const { t } = useTranslation();
-  const [order, setOrder] = useOrdering(JSON.parse(searchingParams.order));
-  const [priceRange, setPriceRange] = React.useState([0, 0]);
-  const [acreageRange, setAcreageRange] = React.useState([0, 0]);
-  const [fontLengthRange, setFrontLengthRange] = React.useState([0, 0]);
-  const [classifications, setClassifications] = React.useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [order, setOrder] = useOrdering();
+  const [priceRange, setPriceRange] = useRange(
+    searchingParams.price_range || defaultRange
+  );
+  const [acreageRange, setAcreageRange] = useRange(
+    searchingParams.acreage_range || defaultRange
+  );
+  const [fontLengthRange, setFrontLengthRange] = useRange(
+    searchingParams.front_length_range || defaultRange
+  );
+  const [classifications, setClassifications] = useClassification(
+    searchingParams
+  );
+  const [currentPage, setCurrentPage] = useState(
+    Number(searchingParams.page || 0)
+  );
   const parsingParams = (condition = {}) => ({
     address_names: addresses,
     page: currentPage,
     order,
     price_range: priceRange,
     acreage_range: acreageRange,
-    front_length: fontLengthRange,
+    front_length_range: fontLengthRange,
     ...condition
   });
 
@@ -75,7 +83,11 @@ const TopLands = ({
     fontLengthRange,
     classifications
   ]);
+
   const handleConditionChange = condition => {
+    const pathname = window.location.pathname;
+    if (pathname.includes("dashboard")) return;
+
     const queryString = toQueryString(parsingParams(condition));
     history.push({
       pathname: window.location.pathname,
@@ -84,8 +96,9 @@ const TopLands = ({
   };
 
   const handlePageChange = (_, page) => {
-    setCurrentPage(page);
-    handleConditionChange({ page });
+    const newPage = Number(page);
+    setCurrentPage(newPage);
+    handleConditionChange({ page: newPage });
   };
 
   const handlePriceChange = (_, newValue) => {
@@ -100,7 +113,7 @@ const TopLands = ({
 
   const handleFrontLengthChange = (_, newValue) => {
     setFrontLengthRange(newValue);
-    handleConditionChange({ front_length: newValue });
+    handleConditionChange({ front_length_range: newValue });
   };
 
   const handleClassificationsChange = event => {

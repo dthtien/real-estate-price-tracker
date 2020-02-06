@@ -33,7 +33,10 @@ import GridItem from "components/Grid/GridItem";
 const useStyles = makeStyles(styles);
 
 const Show = ({
-  match: { params },
+  match: {
+    params,
+    params: { id }
+  },
   load,
   loadLands,
   address: { data, loading },
@@ -47,7 +50,7 @@ const Show = ({
 
   useEffect(() => {
     load({ ...params, order });
-  }, [params, order]);
+  }, [id, order]);
 
   if (loading) {
     return <Loading ready={!loading} />;

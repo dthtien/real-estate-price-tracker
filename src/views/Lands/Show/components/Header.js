@@ -92,7 +92,7 @@ const Header = ({
                 <strong>{t("Classification")}: </strong>
                 {classification}
               </Typography>
-              {frontLength && frontLength !== 0 && (
+              {frontLength !== 0 && (
                 <Typography variant="body1">
                   <strong>{t("Front length")}: </strong>
                   {frontLength}m

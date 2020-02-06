@@ -84,8 +84,7 @@ function Dashboard({
     }));
 
     let defaultAddresses = [];
-
-    if (search && search !== "?") {
+    if (params.address_names) {
       defaultAddresses = subAddresses.map(
         ({ attributes: { alias_name, name } }) => ({
           value: alias_name,
