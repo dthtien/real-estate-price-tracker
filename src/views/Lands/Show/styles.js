@@ -21,7 +21,8 @@ const styles = {
     textAlign: "center",
     fontSize: "1em",
     marginBlockStart: 0,
-    marginBlockEnd: 0
+    marginBlockEnd: 0,
+    padding: 10
   },
   chartContent: {
     overflowX: "auto"

@@ -74,7 +74,10 @@ export const locales = {
       "Posted date to": "Đến ngày",
       Acreage: "Diện tích",
       "Front length": "Mặt tiền",
-      Classification: "Loại BDS"
+      Classification: "Loại BDS",
+      Agency: "Từ môi giới",
+      Yes: "Có",
+      No: "Không(không chắc chắn)"
     }
   }
 };

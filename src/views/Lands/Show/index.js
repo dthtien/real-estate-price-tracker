@@ -59,6 +59,7 @@ const Show = ({
             sourceUrl={attributes.source_url}
             frontLength={attributes.front_length}
             classification={attributes.classification}
+            agency={attributes.attributes}
           />
           <HistoryPrices
             loadHistoryPrices={loadHistoryPrices}

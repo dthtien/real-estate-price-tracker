@@ -25,7 +25,8 @@ const Header = ({
   description,
   sourceUrl,
   frontLength,
-  classification
+  classification,
+  agency
 }) => {
   const { t } = useTranslation();
   return (
@@ -42,39 +43,45 @@ const Header = ({
           </CardHeader>
           <CardBody>
             <GridContainer>
-              <GridItem xs={12} sm={6} md={2}>
+              <GridItem xs={12} sm={6} md={3}>
                 <p className={classes.detailText}>
                   {t("Price")}/m²: {numeral(feetSquarePrice).format("0,0")}{" "}
                   VND/m²
                 </p>
               </GridItem>
-              <GridItem xs={12} sm={6} md={2}>
+              <GridItem xs={12} sm={6} md={3}>
                 {" "}
                 <p className={classes.detailText}>
                   {t("Feet square")}: {feetSquare} m²
                 </p>
               </GridItem>
-              <GridItem xs={12} sm={6} md={2}>
+              <GridItem xs={12} sm={6} md={3}>
+                {" "}
+                <p className={classes.detailText}>
+                  {t("Agency")}: {agency ? t("Yes") : t("No")}
+                </p>
+              </GridItem>
+              <GridItem xs={12} sm={6} md={3}>
                 <p className={classes.detailText}>
                   {t("Price")}: {numeral(totalPrice).format("0,0")} VND
                 </p>
               </GridItem>
               {historyPricesData && (
                 <>
-                  <GridItem xs={12} sm={6} md={2}>
+                  <GridItem xs={12} sm={6} md={4}>
                     <p className={classes.detailText}>
                       {t("Change times")}:{" "}
                       {numeral(historyPricesData.total_count).format("0,0")}
                     </p>
                   </GridItem>
-                  <GridItem xs={12} sm={6} md={2}>
+                  <GridItem xs={12} sm={6} md={4}>
                     <p className={classes.detailText}>
                       {t("Highest price")}:{" "}
                       {numeral(historyPricesData.max_total_price).format("0,0")}{" "}
                       VND
                     </p>
                   </GridItem>
-                  <GridItem xs={12} sm={6} md={2}>
+                  <GridItem xs={12} sm={6} md={4}>
                     <p className={classes.detailText}>
                       {t("Lowest price")}:{" "}
                       {numeral(historyPricesData.min_total_price).format("0,0")}{" "}
@@ -125,7 +132,8 @@ Header.propTypes = {
   historyPricesData: PropTypes.object,
   sourceUrl: PropTypes.string,
   frontLength: PropTypes.number,
-  classification: PropTypes.string
+  classification: PropTypes.string,
+  agency: PropTypes.bool
 };
 
 export default Header;
