@@ -6,6 +6,7 @@ import TablePagination from "@material-ui/core/TablePagination";
 import Table from "@material-ui/core/Table";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import TextField from "@material-ui/core/TextField";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import CardBody from "components/Card/CardBody.js";
@@ -51,6 +52,12 @@ const TopLands = ({
   const [classifications, setClassifications] = useClassification(
     searchingParams
   );
+  let initialKeyword = searchingParams.keyword;
+  if (initialKeyword && initialKeyword.includes('"')) {
+    initialKeyword = JSON.parse(initialKeyword);
+  }
+
+  const [keyword, setKeyword] = useState(initialKeyword || "");
   const [currentPage, setCurrentPage] = useState(
     Number(searchingParams.page || 0)
   );
@@ -61,6 +68,7 @@ const TopLands = ({
     price_range: priceRange,
     acreage_range: acreageRange,
     front_length_range: fontLengthRange,
+    keyword,
     ...condition
   });
 
@@ -81,7 +89,8 @@ const TopLands = ({
     priceRange,
     acreageRange,
     fontLengthRange,
-    classifications
+    classifications,
+    keyword
   ]);
 
   const handleConditionChange = condition => {
@@ -109,6 +118,12 @@ const TopLands = ({
   const handleAcreageChange = (_, newValue) => {
     setAcreageRange(newValue);
     handleConditionChange({ acreage_range: newValue });
+  };
+
+  const handleKeywordChange = e => {
+    const value = e.target.value;
+    setKeyword(value);
+    handleConditionChange({ keyword: value });
   };
 
   const handleFrontLengthChange = (_, newValue) => {
@@ -184,6 +199,14 @@ const TopLands = ({
               component="div"
             />
           )}
+          <TextField
+            name="keyword"
+            label={t("Keyword")}
+            variant="outlined"
+            value={keyword}
+            className={classes.searchInput}
+            onChange={handleKeywordChange}
+          />
           <h4 className={classes.cardTitleWhite}>{t("Lands")}</h4>
           <p className={classes.cardCategoryWhite}>
             {t("Updated at")} {updatedAt}

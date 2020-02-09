@@ -65,6 +65,12 @@ export const landStyles = theme => ({
   classificationText: {
     marginTop: 10
   },
+  searchInput: {
+    width: "50%",
+    "& label": {
+      color: "white"
+    }
+  },
   priceSlider: {
     width: "50%",
     "&:first-child": {

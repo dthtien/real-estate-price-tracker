@@ -77,7 +77,8 @@ export const locales = {
       Classification: "Loại BDS",
       Agency: "Từ môi giới",
       Yes: "Có",
-      No: "Không(không chắc chắn)"
+      No: "Không(không chắc chắn)",
+      Keyword: "Nhập để tìm kiếm"
     }
   }
 };
