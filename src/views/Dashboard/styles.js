@@ -69,6 +69,9 @@ export const landStyles = theme => ({
     width: "50%",
     "& label": {
       color: "white"
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "100%"
     }
   },
   priceSlider: {

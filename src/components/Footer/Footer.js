@@ -24,8 +24,21 @@ export default function Footer(props) {
         <div className={classes.left}>
           <List className={classes.list}>
             <ListItem className={classes.inlineBlock}>
-              <a href="https://github.com/dthtien/real-estate-price-tracker" className={classes.block}>
+              <a
+                href="https://github.com/dthtien/real-estate-price-tracker"
+                className={classes.block}
+                target="_blank"
+              >
                 Github
+              </a>
+            </ListItem>
+            <ListItem className={classes.inlineBlock}>
+              <a
+                href="https://www.facebook.com/toplands.official/"
+                className={classes.block}
+                target="_blank"
+              >
+                Facebook
               </a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
