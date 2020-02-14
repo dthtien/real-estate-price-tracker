@@ -28,7 +28,6 @@ const HistoryPrices = ({
 }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  console.log(classes);
   const [currentPage, setCurrentPage] = useState(0);
   const [priceOrdering, setPriceOrdering] = useState("desc");
   const [postedDateOrdering, setPostedDateOrdering] = useState("desc");

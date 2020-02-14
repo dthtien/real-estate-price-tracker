@@ -78,7 +78,8 @@ export const locales = {
       Agency: "Từ môi giới",
       Yes: "Có",
       No: "Không(không chắc chắn)",
-      Keyword: "Nhập để tìm kiếm"
+      Keyword: "Nhập để tìm kiếm",
+      "Preview Images": "Một số hình ảnh(click vào hình để xem chi tiết)"
     }
   }
 };

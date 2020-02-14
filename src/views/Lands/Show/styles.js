@@ -34,6 +34,9 @@ const styles = {
     float: "right",
     textTransform: "inherit",
     color: "##252525"
+  },
+  previewImages: {
+    textAlign: "center"
   }
 };
 

@@ -10,6 +10,7 @@ import CardBody from "components/Card/CardBody.js";
 
 import avatar from "assets/img/profile.jpg";
 import cv from "assets/img/cv.pdf";
+import CustomHeader from "components/Header";
 
 const styles = {
   cardCategoryWhite: {
@@ -39,6 +40,9 @@ function UserProfile() {
   const classes = useStyles();
   return (
     <div>
+      <CustomHeader
+        title={"dthtien - Full stack developer (<strong>Rails/React</strong>)"}
+      />
       <GridContainer>
         <GridItem xs={12} sm={12} md={8}>
           <iframe src={cv} width="100%" className={classes.cvFile} />

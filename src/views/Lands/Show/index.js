@@ -20,6 +20,7 @@ import { Header, HistoryPrices } from "./components";
 import styles from "./styles";
 import { makeSelectHistoryPrices } from "./duck/selector";
 import Loading from "components/Loading";
+import ImageGridList from "components/Gallery";
 const useStyles = makeStyles(styles);
 
 const Show = ({
@@ -61,6 +62,12 @@ const Show = ({
             classification={attributes.classification}
             agency={attributes.attributes}
           />
+
+          {attributes.images.length > 0 && (
+            <div className={classes.previewImages}>
+              <ImageGridList images={attributes.images} />
+            </div>
+          )}
           <HistoryPrices
             loadHistoryPrices={loadHistoryPrices}
             params={params}
