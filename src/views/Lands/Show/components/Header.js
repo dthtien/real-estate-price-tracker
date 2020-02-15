@@ -98,50 +98,67 @@ const Header = ({
             </GridContainer>
           </CardBody>
           <CardFooter stats>
-            <div>
-              <Typography variant="body1" className={classes.description}>
-                {description}
-              </Typography>
-              <Typography variant="body1" className={classes.description}>
+            <Typography variant="body1" className={classes.description}>
+              {description}
+            </Typography>
+          </CardFooter>
+
+          <GridContainer>
+            <GridItem xs={12} sm={6} className={classes.moreInfo}>
+              <Typography
+                variant="body1"
+                className={`${classes.description} ${classes.p10}`}
+              >
                 <strong>{t("Classification")}: </strong>
                 {classification}
               </Typography>
               {frontLength !== 0 && (
-                <Typography variant="body1" className={classes.description}>
+                <Typography
+                  variant="body1"
+                  className={`${classes.description} ${classes.p10}`}
+                >
                   <strong>{t("Front length")}: </strong>
                   {frontLength}m
                 </Typography>
               )}
 
               {postedDate.length > 0 && (
-                <Typography variant="body1" className={classes.description}>
+                <Typography
+                  variant="body1"
+                  className={`${classes.description} ${classes.p10}`}
+                >
                   <strong>{t("Posted Date")}: </strong>
                   {postedDate}
                 </Typography>
               )}
 
               {expiredDate.length > 0 && (
-                <Typography variant="body1" className={classes.description}>
+                <Typography
+                  variant="body1"
+                  className={`${classes.description} ${classes.p10}`}
+                >
                   <strong>{t("Expired Date")}: </strong>
                   {expiredDate}
                 </Typography>
               )}
-
+            </GridItem>
+            <GridItem xs={12} sm={6} className={classes.moreInfo}>
               <Contact
                 user={user}
                 classes={classes}
                 loadUserInfo={loadUserInfo}
               />
-              <Button
-                href={bdsUrl + sourceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={classes.detailLink}
-              >
-                {t("More detail")}...
-              </Button>
-            </div>
-          </CardFooter>
+            </GridItem>
+          </GridContainer>
+
+          <Button
+            href={bdsUrl + sourceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={classes.detailLink}
+          >
+            {t("More detail")}...
+          </Button>
         </Card>
       </GridItem>
     </GridContainer>

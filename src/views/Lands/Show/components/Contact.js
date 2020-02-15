@@ -14,15 +14,24 @@ const Contact = ({ loadUserInfo, user, classes }) => {
     if (attributes) {
       return (
         <>
-          <Typography variant="body1" className={classes.description}>
+          <Typography
+            variant="body1"
+            className={`${classes.description} ${classes.p10}`}
+          >
             <strong>{t("Name")}: </strong>
             {attributes.name || notFound}
           </Typography>
-          <Typography variant="body1" className={classes.description}>
+          <Typography
+            variant="body1"
+            className={`${classes.description} ${classes.p10}`}
+          >
             <strong>{t("Email")}: </strong>
             {attributes.email || notFound}
           </Typography>
-          <Typography variant="body1" className={classes.description}>
+          <Typography
+            variant="body1"
+            className={`${classes.description} ${classes.p10}`}
+          >
             <strong>{t("Phone number")}: </strong>
             {attributes.phone_number || notFound}
           </Typography>
@@ -31,7 +40,10 @@ const Contact = ({ loadUserInfo, user, classes }) => {
     }
 
     return (
-      <Typography variant="body1" className={classes.description}>
+      <Typography
+        variant="body1"
+        className={`${classes.description} ${classes.p10}`}
+      >
         <strong>{t("Seller Information")}: </strong>
         {notFound}
       </Typography>

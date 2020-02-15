@@ -40,7 +40,11 @@ const styles = {
   },
   description: {
     lineHeight: 2,
-    marginBottom: 10
+    marginBottom: 10,
+    display: "block"
+  },
+  p10: {
+    padding: "0 15px"
   }
 };
 
