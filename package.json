@@ -23,7 +23,7 @@
     "react-ga": "^2.7.0",
     "react-helmet": "^5.2.1",
     "react-i18next": "^11.2.2",
-    "react-medium-image-zoom": "^4.0.3",
+    "react-images": "^1.1.0-beta.3",
     "react-placeholder": "^3.0.2",
     "react-redux": "^7.1.1",
     "react-router-dom": "5.0.1",
