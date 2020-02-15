@@ -19,7 +19,9 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center"
   },
   title: {
-    paddingBottom: 15
+    paddingBottom: 15,
+    display: "block",
+    width: "100%"
   },
   image: {
     width: 200,
