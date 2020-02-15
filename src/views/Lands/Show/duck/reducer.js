@@ -5,7 +5,10 @@ import {
   LOAD_ERROR,
   LOAD_HISTORY_PRICES,
   LOAD_HISTORY_PRICES_SUCCESS,
-  LOAD_HISTORY_PRICES_ERROR
+  LOAD_HISTORY_PRICES_ERROR,
+  LOAD_USER,
+  LOAD_USER_SUCCESS,
+  LOAD_USER_ERROR
 } from "./types";
 
 export const initialState = {
@@ -18,7 +21,8 @@ export const initialState = {
     loading: false,
     error: false,
     data: null
-  }
+  },
+  user: null
 };
 
 export const reducerName = "landDetail";
@@ -30,6 +34,7 @@ const reducer = (state = initialState, action = {}) =>
         draft.land.loading = true;
         draft.land.error = false;
         draft.land.data = null;
+        draft.user = null;
         break;
 
       case LOAD_SUCCESS:
@@ -60,6 +65,18 @@ const reducer = (state = initialState, action = {}) =>
         draft.historyPrices.loading = false;
         draft.historyPrices.error = true;
         draft.historyPrices.data = null;
+        break;
+
+      case LOAD_USER:
+        draft.user = null;
+        break;
+
+      case LOAD_USER_SUCCESS:
+        draft.user = action.payload;
+        break;
+
+      case LOAD_USER_ERROR:
+        draft.user = null;
         break;
     }
   });

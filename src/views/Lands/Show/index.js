@@ -10,15 +10,17 @@ import CustomHeader from "components/Header";
 import reducer, {
   load,
   loadHistoryPrices,
+  loadUser,
   reducerName,
   saga,
-  makeSelectLandDetail
+  makeSelectLandDetail,
+  makeSelectHistoryPrices,
+  makeSelectUser
 } from "./duck";
 import reducerInjector from "utils/reducerInjector";
 import { Header, HistoryPrices } from "./components";
 
 import styles from "./styles";
-import { makeSelectHistoryPrices } from "./duck/selector";
 import Loading from "components/Loading";
 import ImageGridList from "components/Gallery";
 const useStyles = makeStyles(styles);
@@ -28,7 +30,9 @@ const Show = ({
   load,
   landDetail: { data, loading },
   loadHistoryPrices,
-  historyPrices
+  historyPrices,
+  loadUser,
+  user
 }) => {
   useEffect(() => {
     load(params);
@@ -44,6 +48,9 @@ const Show = ({
     if (data) {
       const { attributes } = data;
       const { data: historyPricesData } = historyPrices;
+      const loadUserInfo = () => {
+        loadUser({ id: attributes.slug });
+      };
       return (
         <div>
           <CustomHeader title={attributes.address} />
@@ -52,6 +59,7 @@ const Show = ({
             classes={classes}
             title={attributes.title}
             totalPrice={attributes.total_price}
+            user={user}
             feetSquare={attributes.acreage}
             feetSquarePrice={attributes.square_meter_price}
             updatedAt={attributes.updated_at}
@@ -61,6 +69,9 @@ const Show = ({
             frontLength={attributes.front_length}
             classification={attributes.classification}
             agency={attributes.attributes}
+            expiredDate={attributes.expired_date}
+            postedDate={attributes.post_date}
+            loadUserInfo={loadUserInfo}
           />
 
           {attributes.images.length > 0 && (
@@ -88,19 +99,23 @@ Show.propTypes = {
   load: PropTypes.func.isRequired,
   loadHistoryPrices: PropTypes.func.isRequired,
   landDetail: PropTypes.object.isRequired,
-  historyPrices: PropTypes.object.isRequired
+  historyPrices: PropTypes.object.isRequired,
+  user: PropTypes.object,
+  loadUser: PropTypes.func.isRequired
 };
 
 const withReducer = reducerInjector({ reducer, key: reducerName, saga });
 
 const mapDispatchToProps = {
   load,
-  loadHistoryPrices
+  loadHistoryPrices,
+  loadUser
 };
 
 const mapStateToProps = createStructuredSelector({
   landDetail: makeSelectLandDetail(),
-  historyPrices: makeSelectHistoryPrices()
+  historyPrices: makeSelectHistoryPrices(),
+  user: makeSelectUser()
 });
 
 const withConnect = connect(

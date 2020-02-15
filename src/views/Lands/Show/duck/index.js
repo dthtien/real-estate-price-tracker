@@ -1,4 +1,8 @@
-export { makeSelectLandDetail } from "./selector";
-export { load, loadHistoryPrices } from "./actions";
+export {
+  makeSelectLandDetail,
+  makeSelectUser,
+  makeSelectHistoryPrices
+} from "./selector";
+export { load, loadHistoryPrices, loadUser } from "./actions";
 export { reducerName, default } from "./reducer";
 export { default as saga } from "./saga";

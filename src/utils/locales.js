@@ -79,7 +79,12 @@ export const locales = {
       Yes: "Có",
       No: "Không(không chắc chắn)",
       Keyword: "Nhập để tìm kiếm",
-      "Preview Images": "Một số hình ảnh(click vào hình để xem chi tiết)"
+      "Preview Images": "Một số hình ảnh(click vào hình để xem chi tiết)",
+      "Posted Date": "Ngày đăng",
+      "Expired Date": "Ngày hết hạn",
+      "Phone number": "Số điện thoại",
+      "Seller Information": "Thông tin người bán",
+      "Not found": "Không tìm thấy"
     }
   }
 };

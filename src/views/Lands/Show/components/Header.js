@@ -14,6 +14,7 @@ import CardFooter from "components/Card/CardFooter.js";
 import CardBody from "components/Card/CardBody";
 import Typography from "@material-ui/core/Typography";
 import { Button } from "@material-ui/core";
+import Contact from "./Contact";
 const bdsUrl = "https://batdongsan.com.vn";
 const Header = ({
   classes,
@@ -26,7 +27,11 @@ const Header = ({
   sourceUrl,
   frontLength,
   classification,
-  agency
+  expiredDate,
+  postedDate,
+  agency,
+  user,
+  loadUserInfo
 }) => {
   const { t } = useTranslation();
   return (
@@ -94,17 +99,39 @@ const Header = ({
           </CardBody>
           <CardFooter stats>
             <div>
-              <Typography variant="body1">{description}</Typography>
-              <Typography variant="body1">
+              <Typography variant="body1" className={classes.description}>
+                {description}
+              </Typography>
+              <Typography variant="body1" className={classes.description}>
                 <strong>{t("Classification")}: </strong>
                 {classification}
               </Typography>
               {frontLength !== 0 && (
-                <Typography variant="body1">
+                <Typography variant="body1" className={classes.description}>
                   <strong>{t("Front length")}: </strong>
                   {frontLength}m
                 </Typography>
               )}
+
+              {postedDate.length > 0 && (
+                <Typography variant="body1" className={classes.description}>
+                  <strong>{t("Posted Date")}: </strong>
+                  {postedDate}
+                </Typography>
+              )}
+
+              {expiredDate.length > 0 && (
+                <Typography variant="body1" className={classes.description}>
+                  <strong>{t("Expired Date")}: </strong>
+                  {expiredDate}
+                </Typography>
+              )}
+
+              <Contact
+                user={user}
+                classes={classes}
+                loadUserInfo={loadUserInfo}
+              />
               <Button
                 href={bdsUrl + sourceUrl}
                 target="_blank"
@@ -133,7 +160,11 @@ Header.propTypes = {
   sourceUrl: PropTypes.string,
   frontLength: PropTypes.number,
   classification: PropTypes.string,
-  agency: PropTypes.bool
+  agency: PropTypes.bool,
+  expiredDate: PropTypes.string,
+  postedDate: PropTypes.string,
+  user: PropTypes.object,
+  loadUserInfo: PropTypes.func.isRequired
 };
 
 export default Header;

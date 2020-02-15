@@ -1,18 +1,24 @@
 import { createSelector } from "reselect";
 import { initialState } from "./reducer";
 
-const selectDashBoard = state => state.landDetail || initialState;
+const selectLand = state => state.landDetail || initialState;
 
 const makeSelectLandDetail = () =>
   createSelector(
-    selectDashBoard,
-    selectDashBoardState => selectDashBoardState.land
+    selectLand,
+    selectLandState => selectLandState.land
   );
 
 const makeSelectHistoryPrices = () =>
   createSelector(
-    selectDashBoard,
-    selectDashBoardState => selectDashBoardState.historyPrices
+    selectLand,
+    selectLandState => selectLandState.historyPrices
   );
 
-export { makeSelectLandDetail, makeSelectHistoryPrices };
+const makeSelectUser = () =>
+  createSelector(
+    selectLand,
+    selectLandState => selectLandState.user
+  );
+
+export { makeSelectLandDetail, makeSelectHistoryPrices, makeSelectUser };

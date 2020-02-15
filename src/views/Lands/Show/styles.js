@@ -14,15 +14,15 @@ const styles = {
   },
   titleText: {
     fontWeight: "bold",
-    textTransform: "capitalize"
+    textTransform: "capitalize",
+    paddingTop: 15
   },
   detailText: {
     fontWeight: "bold",
     textAlign: "center",
     fontSize: "1em",
     marginBlockStart: 0,
-    marginBlockEnd: 0,
-    padding: 10
+    marginBlockEnd: 0
   },
   chartContent: {
     overflowX: "auto"
@@ -37,6 +37,10 @@ const styles = {
   },
   previewImages: {
     textAlign: "center"
+  },
+  description: {
+    lineHeight: 2,
+    marginBottom: 10
   }
 };
 

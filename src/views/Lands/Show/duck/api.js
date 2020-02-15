@@ -15,3 +15,11 @@ export const getHistoryPrices = (params = {}) =>
     .catch(err => {
       throw err.response;
     });
+
+export const getUser = (params = {}) =>
+  httpClient()
+    .get(`lands/${params.id}/user`, { params })
+    .then(response => response.data)
+    .catch(err => {
+      throw err.response;
+    });
