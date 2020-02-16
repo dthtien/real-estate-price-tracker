@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://toplands.tech/sitemap.xml
+Sitemap: https://api.toplands.tech/sitemap.xml
