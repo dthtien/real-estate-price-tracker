@@ -84,7 +84,11 @@ export const locales = {
       "Expired Date": "Ngày hết hạn",
       "Phone number": "Số điện thoại",
       "Seller Information": "Thông tin người bán",
-      "Not found": "Không tìm thấy"
+      "Not found": "Không tìm thấy",
+      "Land only price": "Đất",
+      "Apartment Price": "Chung cư",
+      "House price": "Nhà đất",
+      "Farm price": "Đất nông nghiệp"
     }
   }
 };

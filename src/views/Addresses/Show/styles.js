@@ -17,6 +17,10 @@ const styles = {
     textTransform: "capitalize",
     float: "left"
   },
+  priceInfoText: {
+    fontWeight: "bold",
+    marginTop: 10
+  },
   detailText: {
     fontWeight: "bold",
     textAlign: "center",

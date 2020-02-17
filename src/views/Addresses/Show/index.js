@@ -75,9 +75,11 @@ const Show = ({
           price={attributes.price}
           updatedAt={attributes.logged_date}
           landsCount={attributes.lands_count}
-          landsCountRatio={attributes.lands_count_ratio}
-          priceRatio={attributes.price_ratio}
           newLandsCount={attributes.new_lands_count}
+          landOnlyPrice={attributes.land_only_price}
+          apartmentPrice={attributes.apartment_price}
+          farmPrice={attributes.farm_price}
+          housePrice={attributes.house_price}
         />
         {sub_addresses.length > 0 && (
           <Card chart>
@@ -119,8 +121,8 @@ const Show = ({
           className="fb-comments"
           dat-href="https://developers.facebook.com/docs/plugins/comments#configurator"
           data-width="auto"
-          data-numposts="5">
-        </div>
+          data-numposts="5"
+        ></div>
       </div>
     );
   }

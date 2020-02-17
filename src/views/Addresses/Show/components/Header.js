@@ -19,10 +19,12 @@ const Header = ({
   title,
   price,
   landsCount,
-  landsCountRatio,
-  priceRatio,
   updatedAt,
-  newLandsCount
+  newLandsCount,
+  landOnlyPrice,
+  apartmentPrice,
+  farmPrice,
+  housePrice
 }) => {
   const { t } = useTranslation();
   return (
@@ -47,19 +49,35 @@ const Header = ({
               <GridItem xs={12} md={4}>
                 <p className={classes.detailText}>
                   {t("Price")}: {numeral(price).format("0,0")} VND/m²{" "}
-                  <i>
-                    {t("Increase ratio")}:{" "}
-                    <span>{numeral(priceRatio).format("0%")}</span>
-                  </i>
                 </p>
               </GridItem>
               <GridItem xs={12} md={4}>
                 <p className={classes.detailText}>
                   {t("Lands")}: {numeral(landsCount).format("0,0")}{" "}
-                  <i>
-                    {t("Increase ratio")}:{" "}
-                    <span>{numeral(landsCountRatio).format("0%")}</span>
-                  </i>
+                </p>
+              </GridItem>
+            </GridContainer>
+            <GridContainer>
+              <GridItem xs={12} md={3}>
+                <p className={classes.priceInfoText}>
+                  {t("Land only price")}: {numeral(landOnlyPrice).format("0,0")}{" "}
+                  VND/m²
+                </p>
+              </GridItem>
+              <GridItem xs={12} md={3}>
+                <p className={classes.priceInfoText}>
+                  {t("Apartment Price")}:{" "}
+                  {numeral(apartmentPrice).format("0,0")} VND/m²
+                </p>
+              </GridItem>
+              <GridItem xs={12} md={3}>
+                <p className={classes.priceInfoText}>
+                  {t("House price")}: {numeral(housePrice).format("0,0")} VND/m²
+                </p>
+              </GridItem>
+              <GridItem xs={12} md={3}>
+                <p className={classes.priceInfoText}>
+                  {t("Farm price")}: {numeral(farmPrice).format("0,0")} VND/m²
                 </p>
               </GridItem>
             </GridContainer>
@@ -81,9 +99,12 @@ const Header = ({
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
   price: PropTypes.string.isRequired,
-  priceRatio: PropTypes.string.isRequired,
   landsCount: PropTypes.number.isRequired,
   newLandsCount: PropTypes.number.isRequired,
+  landOnlyPrice: PropTypes.number.isRequired,
+  apartmentPrice: PropTypes.number.isRequired,
+  farmPrice: PropTypes.number.isRequired,
+  housePrice: PropTypes.number.isRequired,
   landsCountRatio: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   updatedAt: PropTypes.string
