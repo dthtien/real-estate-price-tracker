@@ -32,9 +32,8 @@ import reducerInjector from "utils/reducerInjector";
 
 import styles from "./styles";
 import { createStructuredSelector } from "reselect";
-import { Header, Lands, SearchForm, Addresses } from "./components";
+import { Header, Lands, SearchForm, Addresses, Loading } from "./components";
 import { LineChart } from "components/Charts";
-import Loading from "components/Loading";
 
 const useStyles = makeStyles(styles);
 function Dashboard({
@@ -152,7 +151,7 @@ function Dashboard({
   }
 
   if (loading) {
-    return <Loading ready={!loading} />;
+    return <Loading  />;
   }
 
   return <h1>{t("Data not found")}</h1>;

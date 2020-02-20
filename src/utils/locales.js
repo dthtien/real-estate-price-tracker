@@ -88,7 +88,8 @@ export const locales = {
       "Land only price": "Đất",
       "Apartment Price": "Chung cư",
       "House price": "Nhà đất",
-      "Farm price": "Đất nông nghiệp"
+      "Farm price": "Đất nông nghiệp",
+      Loading: "Dữ liệu đang được tải. Vui lòng chờ hoặc chọn quận dưới đây để xem chi tiết"
     }
   }
 };
