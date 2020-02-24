@@ -151,7 +151,7 @@ function Dashboard({
   }
 
   if (loading) {
-    return <Loading  />;
+    return <Loading />;
   }
 
   return <h1>{t("Data not found")}</h1>;
