@@ -111,7 +111,8 @@ const Header = ({
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
-  averagePrice: PropTypes.string.isRequired,
+  averagePrice: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
   landsCount: PropTypes.number.isRequired,
   newLandsCount: PropTypes.number.isRequired,
   updatedAt: PropTypes.string.isRequired

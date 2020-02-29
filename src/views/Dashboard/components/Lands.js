@@ -29,7 +29,6 @@ const useStyles = makeStyles(styles);
 
 const TopLands = ({
   lands: { data, loading },
-  updatedAt,
   loadLands,
   addresses,
   history,
@@ -71,6 +70,8 @@ const TopLands = ({
     keyword,
     ...condition
   });
+
+  const today = new Date();
 
   useEffect(() => {
     let params = parsingParams();
@@ -209,7 +210,7 @@ const TopLands = ({
           />
           <h4 className={classes.cardTitleWhite}>{t("Lands")}</h4>
           <p className={classes.cardCategoryWhite}>
-            {t("Updated at")} {updatedAt}
+            {t("Updated at")} {today.toDateString()}
           </p>
         </div>
         <Filter
@@ -296,10 +297,8 @@ TopLands.propTypes = {
   lands: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
-  updatedAt: PropTypes.string,
   loadLands: PropTypes.func.isRequired,
-  addresses: PropTypes.array,
-  landsCount: PropTypes.number.isRequired
+  addresses: PropTypes.array
 };
 
 export default memo(withRouter(TopLands));

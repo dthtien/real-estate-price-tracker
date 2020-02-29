@@ -57,7 +57,9 @@ export const districts = [
   { name: "quận 11", slug: "quan-11" },
   { name: "quận 10", slug: "quan-10" },
   { name: "quận 1", slug: "quan-1" }
-];
+]
+  .sort(() => Math.random() - Math.random())
+  .slice(0, 4);
 
 export const toQueryString = obj => {
   return Object.keys(obj)

@@ -70,91 +70,97 @@ function Dashboard({
     });
   };
 
-  if (data) {
-    let landsChart = [];
-    let gotTime = null;
-    let attrs = null;
+  const renderingDashboard = () => {
+    if (data) {
+      let landsChart = [];
+      let gotTime = null;
+      let attrs = null;
 
-    attrs = data.attributes;
-    const subAddresses = attrs.children;
-    landsChart = subAddresses.map(({ id, attributes }) => ({
-      ...attributes,
-      id
-    }));
+      attrs = data.attributes;
+      const subAddresses = attrs.children;
+      landsChart = subAddresses.map(({ id, attributes }) => ({
+        ...attributes,
+        id
+      }));
 
-    let defaultAddresses = [];
-    if (params.address_names) {
-      defaultAddresses = subAddresses.map(
-        ({ attributes: { alias_name, name } }) => ({
-          value: alias_name,
-          label: capitalize(name)
-        })
+      let defaultAddresses = [];
+      if (params.address_names) {
+        defaultAddresses = subAddresses.map(
+          ({ attributes: { alias_name, name } }) => ({
+            value: alias_name,
+            label: capitalize(name)
+          })
+        );
+      }
+
+      gotTime = attrs.latest_updated_price;
+      return (
+        <>
+          <SearchForm
+            handleAddressesInputChange={handleAddressNamesSelectorChange}
+            classes={classes}
+            onSubmit={handleSearch}
+            options={defaultAddresses}
+          />
+          <GridContainer>
+            <GridItem xs={12} sm={12} md={12}>
+              <Card chart>
+                <CardBody>
+                  <div className={classes.chartContent}>
+                    <LineChart data={landsChart} chartKey="price" />
+                  </div>
+                  <h4 className={classes.cardTitle}>{t("chartTitle")}</h4>
+                  <p className={classes.cardCategory}>
+                    <span className={classes.successText}>
+                      <ArrowUpward className={classes.upArrowCardCategory} />
+                      {attrs.price_ratio}%
+                    </span>{" "}
+                    {t("increase in yesterday")}.
+                  </p>
+                </CardBody>
+                <CardFooter chart>
+                  <div className={classes.stats}>
+                    <AccessTime />
+                    {t("Updated at")} {gotTime}
+                  </div>
+                </CardFooter>
+              </Card>
+            </GridItem>
+          </GridContainer>
+          <Header
+            classes={classes}
+            averagePrice={attrs.average_price}
+            landsCount={attrs.lands_count}
+            newLandsCount={attrs.new_lands_count}
+            updatedAt={gotTime}
+          />
+          <Addresses
+            addresses={subAddresses}
+            updatedAt={gotTime}
+            ordering={setOrder}
+          />
+        </>
       );
     }
 
-    gotTime = attrs.latest_updated_price;
-    return (
-      <>
-        <SearchForm
-          handleAddressesInputChange={handleAddressNamesSelectorChange}
-          classes={classes}
-          onSubmit={handleSearch}
-          options={defaultAddresses}
-        />
-        <GridContainer>
-          <GridItem xs={12} sm={12} md={12}>
-            <Card chart>
-              <CardBody>
-                <div className={classes.chartContent}>
-                  <LineChart data={landsChart} chartKey="price" />
-                </div>
-                <h4 className={classes.cardTitle}>{t("chartTitle")}</h4>
-                <p className={classes.cardCategory}>
-                  <span className={classes.successText}>
-                    <ArrowUpward className={classes.upArrowCardCategory} />
-                    {attrs.price_ratio}%
-                  </span>{" "}
-                  {t("increase in yesterday")}.
-                </p>
-              </CardBody>
-              <CardFooter chart>
-                <div className={classes.stats}>
-                  <AccessTime />
-                  {t("Updated at")} {gotTime}
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-        </GridContainer>
-        <Header
-          classes={classes}
-          averagePrice={attrs.average_price}
-          landsCount={attrs.lands_count}
-          newLandsCount={attrs.new_lands_count}
-          updatedAt={gotTime}
-        />
-        <Addresses
-          addresses={subAddresses}
-          updatedAt={gotTime}
-          ordering={setOrder}
-        />
-        <Lands
-          classes={classes}
-          lands={lands}
-          updatedAt={gotTime}
-          loadLands={loadLands}
-          addresses={params.address_names}
-          landsCount={attrs.lands_count}
-        />
-      </>
-    );
-  }
+    if (loading) {
+      return <Loading />;
+    }
 
-  if (loading) {
-    return <Loading />;
-  }
+    return <h1>{t("Data not found")}</h1>;
+  };
 
-  return <h1>{t("Data not found")}</h1>;
+  return (
+    <>
+      {renderingDashboard()}
+      <Lands
+        classes={classes}
+        lands={lands}
+        loadLands={loadLands}
+        addresses={params.address_names}
+      />
+    </>
+  )
 }
 
 Dashboard.propTypes = {
