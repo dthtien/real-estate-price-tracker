@@ -17,7 +17,7 @@ const styles = {
   chartFluid: {
     width: "100%",
     minWidth: 500,
-    height: 300
+    height: "60vh"
   }
 };
 
