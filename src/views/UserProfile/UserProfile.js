@@ -40,9 +40,7 @@ function UserProfile() {
   const classes = useStyles();
   return (
     <div>
-      <CustomHeader
-        title={"dthtien - Full stack developer (<strong>Rails/React</strong>)"}
-      />
+      <CustomHeader title={"dthtien - Full stack developer (Rails/React)"} />
       <GridContainer>
         <GridItem xs={12} sm={12} md={8}>
           <iframe src={cv} width="100%" className={classes.cvFile} />
