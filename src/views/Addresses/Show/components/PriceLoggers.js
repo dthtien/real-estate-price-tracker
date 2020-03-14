@@ -63,13 +63,9 @@ const PriceLoggers = ({
       const {
         price_loggers: { data: price_loggers }
       } = data;
-      return (
-        <>
-          {price_loggers.map(({ id, attributes }) => (
-            <PriceLogger priceLogger={attributes} key={id} classes={classes} />
-          ))}
-        </>
-      );
+      return price_loggers.map(({ id, attributes }) => (
+        <PriceLogger priceLogger={attributes} key={id} classes={classes} />
+      ));
     }
 
     return (
@@ -102,6 +98,11 @@ const PriceLoggers = ({
             <TableRow hover className={classes.clickable}>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
+              >
+                {t("Logging date")}
+              </TableCell>
+              <TableCell
+                className={`${classes.tableCell} ${classes.tableHeadCell}`}
                 onClick={() => setOrder("total_price")}
               >
                 {t("Price")}
@@ -110,11 +111,6 @@ const PriceLoggers = ({
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
               >
                 {t("Total selling lands")}
-              </TableCell>
-              <TableCell
-                className={`${classes.tableCell} ${classes.tableHeadCell}`}
-              >
-                {t("Logging date")}
               </TableCell>
             </TableRow>
           </TableHead>

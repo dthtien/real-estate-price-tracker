@@ -90,8 +90,8 @@ const Show = ({
             className="fb-comments"
             dat-href="https://developers.facebook.com/docs/plugins/comments#configurator"
             data-width="auto"
-            data-numposts="5">
-          </div>
+            data-numposts="5"
+          ></div>
         </div>
       );
     }

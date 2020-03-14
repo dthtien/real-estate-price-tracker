@@ -88,7 +88,11 @@ export const locales = {
       "Land only price": "Đất",
       "Apartment Price": "Chung cư",
       "House price": "Nhà đất",
-      "Farm price": "Đất nông nghiệp",
+      "Farm price": "Đất vườn",
+      land_only_price: "Đất",
+      apartment_price: "Chung cư",
+      house_price: "Nhà đất",
+      farm_price: "Đất vườn",
       Loading:
         "Dữ liệu đang được tải. Vui lòng chờ hoặc chọn quận dưới đây để xem chi tiết"
     }

@@ -1,24 +1,39 @@
 import React from "react";
 import PropTypes from "prop-types";
 import numeral from "numeral";
+import { useTranslation } from "react-i18next";
 
 const Tooltip = ({ active, payload, label }) => {
-  if (active && payload && payload[0]) {
-    const { value, dataKey } = payload[0];
+  const { t } = useTranslation();
+
+  if (active && payload) {
+    const priceList = () =>
+      payload.map(data => (
+        <div
+          key={data.dataKey}
+          style={{
+            backgroundColor: "white",
+            padding: 5,
+            color: data.stroke
+          }}
+        >
+          <p>
+            {t(data.name)}: {numeral(data.value).format("0,0")}{" "}
+            {data.dataKey.includes("count") ? "lands" : "VND/m²"}
+          </p>
+        </div>
+      ));
+
     return (
       <div
         style={{
-          backgroundColor: "white",
-          padding: 10,
-          border: "1px solid gray",
-          color: "black"
+          backgroundColor: "white"
         }}
       >
-        <p style={{ textTransform: "capitalize" }}>{label}</p>
-        <p className="label">
-          {numeral(value).format("0,0")}{" "}
-          {dataKey.includes("count") ? "lands" : "VND/m²"}
+        <p style={{ textTransform: "capitalize", fontWeight: "bold" }}>
+          {label}
         </p>
+        {priceList()}
       </div>
     );
   }

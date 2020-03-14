@@ -17,7 +17,6 @@ import CardBody from "components/Card/CardBody";
 const Header = ({
   classes,
   title,
-  price,
   landsCount,
   updatedAt,
   newLandsCount,
@@ -44,11 +43,6 @@ const Header = ({
               <GridItem xs={12} md={4}>
                 <p className={classes.detailText}>
                   {t("New lands")}: {numeral(newLandsCount).format("0,0")}
-                </p>
-              </GridItem>
-              <GridItem xs={12} md={4}>
-                <p className={classes.detailText}>
-                  {t("Price")}: {numeral(price).format("0,0")} VND/m²{" "}
                 </p>
               </GridItem>
               <GridItem xs={12} md={4}>
@@ -98,14 +92,12 @@ const Header = ({
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
-  price: PropTypes.string.isRequired,
   landsCount: PropTypes.number.isRequired,
-  newLandsCount: PropTypes.number.isRequired,
+  newLandsCount: PropTypes.number,
   landOnlyPrice: PropTypes.number.isRequired,
   apartmentPrice: PropTypes.number.isRequired,
   farmPrice: PropTypes.number.isRequired,
   housePrice: PropTypes.number.isRequired,
-  landsCountRatio: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   updatedAt: PropTypes.string
 };

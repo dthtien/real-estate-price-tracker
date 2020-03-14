@@ -15,7 +15,16 @@ const Address = ({ address, classes }) => {
         </Link>
       </TableCell>
       <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
-        {numeral(address.price).format("0a")} VND/m²
+        {numeral(address.land_only_price).format("0a")} VND/m²
+      </TableCell>
+      <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
+        {numeral(address.apartment_price).format("0a")} VND/m²
+      </TableCell>
+      <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
+        {numeral(address.house_price).format("0a")} VND/m²
+      </TableCell>
+      <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
+        {numeral(address.farm_price).format("0a")} VND/m²
       </TableCell>
       <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
         {numeral(address.lands_count).format("0,0")}

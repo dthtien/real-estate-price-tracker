@@ -43,10 +43,34 @@ const Addresses = ({ updatedAt, addresses, ordering }) => {
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}
                 onClick={() => {
-                  ordering("avg_square_meter_price");
+                  ordering("land_only_price");
                 }}
               >
-                {t("Price")}
+                {t("land_only_price")}
+              </TableCell>
+              <TableCell
+                className={`${classes.tableCell} ${classes.tableHeadCell}`}
+                onClick={() => {
+                  ordering("apartment_price");
+                }}
+              >
+                {t("apartment_price")}
+              </TableCell>
+              <TableCell
+                className={`${classes.tableCell} ${classes.tableHeadCell}`}
+                onClick={() => {
+                  ordering("house_price");
+                }}
+              >
+                {t("house_price")}
+              </TableCell>
+              <TableCell
+                className={`${classes.tableCell} ${classes.tableHeadCell}`}
+                onClick={() => {
+                  ordering("farm_price");
+                }}
+              >
+                {t("farm_price")}
               </TableCell>
               <TableCell
                 className={`${classes.tableCell} ${classes.tableHeadCell}`}

@@ -58,13 +58,10 @@ const Show = ({
   if (data) {
     const { attributes } = data;
     const { sub_addresses } = attributes;
-    const chartData = sub_addresses.map(
-      ({ id, attributes: { name, price } }) => ({
-        name,
-        id,
-        price
-      })
-    );
+    const chartData = sub_addresses.map(({ id, attributes }) => ({
+      ...attributes,
+      id
+    }));
 
     return (
       <div>
@@ -84,7 +81,15 @@ const Show = ({
         {sub_addresses.length > 0 && (
           <Card chart>
             <CardHeader className={classes.chartContent}>
-              <LineChart data={chartData} chartKey="price" />
+              <LineChart
+                data={chartData}
+                chartKeys={[
+                  "land_only_price",
+                  "apartment_price",
+                  "house_price",
+                  "farm_price"
+                ]}
+              />
             </CardHeader>
             <CardBody>
               <h4 className={classes.cardTitle}>{t("chartTitle")}</h4>
@@ -93,7 +98,7 @@ const Show = ({
         )}
         <GridContainer>
           {sub_addresses.length > 0 && (
-            <GridItem xs={12} sm={12} md={6}>
+            <GridItem xs={12} sm={12} md={8}>
               <Addresses
                 addresses={attributes.sub_addresses}
                 updatedAt={attributes.logged_date}
@@ -101,7 +106,7 @@ const Show = ({
               />
             </GridItem>
           )}
-          <GridItem xs={12} sm={12} md={6}>
+          <GridItem xs={12} sm={12} md={4}>
             <PriceLoggers
               priceLoggers={priceLoggers}
               loadPriceLoggers={loadPriceLoggers}

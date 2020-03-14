@@ -107,7 +107,15 @@ function Dashboard({
               <Card chart>
                 <CardBody>
                   <div className={classes.chartContent}>
-                    <LineChart data={landsChart} chartKey="price" />
+                    <LineChart
+                      data={landsChart}
+                      chartKeys={[
+                        "land_only_price",
+                        "apartment_price",
+                        "house_price",
+                        "farm_price"
+                      ]}
+                    />
                   </div>
                   <h4 className={classes.cardTitle}>{t("chartTitle")}</h4>
                   <p className={classes.cardCategory}>
@@ -160,7 +168,7 @@ function Dashboard({
         addresses={params.address_names}
       />
     </>
-  )
+  );
 }
 
 Dashboard.propTypes = {

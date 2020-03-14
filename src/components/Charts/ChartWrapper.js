@@ -54,8 +54,7 @@ ChartWrapper.propTypes = {
   classes: PropTypes.object.isRequired,
   data: PropTypes.array.isRequired,
   handleOnClickChart: PropTypes.func.isRequired,
-  chartKey: PropTypes.string.isRequired,
-  children: PropTypes.element.isRequired
+  children: PropTypes.array.isRequired
 };
 
 ChartWrapper.defaultProps = {

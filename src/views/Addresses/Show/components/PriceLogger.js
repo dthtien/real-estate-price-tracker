@@ -8,13 +8,13 @@ const PriceLogger = ({ priceLogger, classes }) => {
   return (
     <TableRow className={classes.landDetail} hover>
       <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
-        {numeral(priceLogger.price).format("0a")} VND
+        {priceLogger.created_at}
+      </TableCell>
+      <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
+        {numeral(priceLogger.price).format("0,0")} VND
       </TableCell>
       <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
         {numeral(priceLogger.lands_count).format("0,0")}
-      </TableCell>
-      <TableCell className={`${classes.tableCell} ${classes.tableHeadCell}`}>
-        {priceLogger.created_at}
       </TableCell>
     </TableRow>
   );
