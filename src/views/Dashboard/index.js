@@ -7,7 +7,6 @@ import qs from "query-string";
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
-import ArrowUpward from "@material-ui/icons/ArrowUpward";
 import AccessTime from "@material-ui/icons/AccessTime";
 // core components
 import GridItem from "components/Grid/GridItem.js";
@@ -118,13 +117,7 @@ function Dashboard({
                     />
                   </div>
                   <h4 className={classes.cardTitle}>{t("chartTitle")}</h4>
-                  <p className={classes.cardCategory}>
-                    <span className={classes.successText}>
-                      <ArrowUpward className={classes.upArrowCardCategory} />
-                      {attrs.price_ratio}%
-                    </span>{" "}
-                    {t("increase in yesterday")}.
-                  </p>
+                  <Header classes={classes} attrs={attrs} updatedAt={gotTime} />
                 </CardBody>
                 <CardFooter chart>
                   <div className={classes.stats}>
@@ -135,13 +128,6 @@ function Dashboard({
               </Card>
             </GridItem>
           </GridContainer>
-          <Header
-            classes={classes}
-            averagePrice={attrs.average_price}
-            landsCount={attrs.lands_count}
-            newLandsCount={attrs.new_lands_count}
-            updatedAt={gotTime}
-          />
           <Addresses
             addresses={subAddresses}
             updatedAt={gotTime}
