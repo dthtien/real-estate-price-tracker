@@ -20,7 +20,7 @@ const styles = {
     position: "relative"
   },
   note: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Inter", "Helvetica", "Arial", sans-serif',
     bottom: "10px",
     color: "#c0c1c2",
     display: "block",
@@ -44,7 +44,7 @@ const styles = {
     marginTop: "0px",
     minHeight: "auto",
     fontWeight: "300",
-    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+    fontFamily: "'Inter', 'Helvetica', 'Arial', sans-serif",
     marginBottom: "3px",
     textDecoration: "none"
   }
@@ -59,7 +59,7 @@ export default function TypographyPage() {
       <CardHeader color="primary">
         <h4 className={classes.cardTitleWhite}>Material Dashboard Heading</h4>
         <p className={classes.cardCategoryWhite}>
-          Created using Roboto Font Family
+          Created using Inter Font Family
         </p>
       </CardHeader>
       <CardBody>

@@ -21,7 +21,7 @@ const hist = createBrowserHistory();
 WebFont.load({
   google: {
     families: [
-      "Poppins:300,400,500,700",
+      "Inter:300,400,500,700,800",
       "sans-serif",
       "Material+Icons",
       "Raleway:700,800"
